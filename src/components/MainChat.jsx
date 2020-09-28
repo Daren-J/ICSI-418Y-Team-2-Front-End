@@ -18,7 +18,7 @@ export default function MainChat() {
           className="inputTextBox"
           id="chatInput"
         />
-        <button className="sendButton">{'Send >>'}</button>
+        <button className="sendButton">{"Send >>"}</button>
       </form>
     </div>
   );

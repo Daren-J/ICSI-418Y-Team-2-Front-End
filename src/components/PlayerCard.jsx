@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/PlayerCard.css";
 import ProgressBar from "./ProgressBar";
-import { VisuallyHidden, ControlBox, Icon, Box } from "@chakra-ui/core";
+import {
+  VisuallyHidden,
+  ControlBox,
+  Icon,
+  Box,
+  Checkbox,
+} from "@chakra-ui/core";
 
 export default function PlayerCard(props) {
-  return (
+
+    const [isChecked, setIsChecked] = useState(false);
+
+    function changeCheckedState (value) {
+      setIsChecked(!value);
+    }
+
+
+    return (
     <div className="PlayerCard">
       <img
         className="PlayerImage"
@@ -25,26 +39,16 @@ export default function PlayerCard(props) {
         />
       </div>
       <label>
-        <VisuallyHidden as="input" type="checkbox" defaultunChecked />
-        <ControlBox
+        <Checkbox
           id={`player${props.id}`}
-          style={{ border: "1px solid white" }}
-          borderWidth="1px"
-          size="24px"
-          rounded="sm"
-          _checked={{
-            bg: "red.500",
-            color: "white",
-            borderColor: "red.500",
-          }}
-          _focus={{ borderColor: "green.600", boxShadow: "outline" }}
+          size="lg"
+          variantColor="red"
+          defaultIsunChecked
+          style={{ marginBottom: "4%" }}
+          onChange={() => changeCheckedState(isChecked)}
         >
-          <Icon name="check" size="16px" />
-        </ControlBox>
-
-        <Box as="span" verticalAlign="top" ml={3}>
           Select Player
-        </Box>
+        </Checkbox>
       </label>
     </div>
   );

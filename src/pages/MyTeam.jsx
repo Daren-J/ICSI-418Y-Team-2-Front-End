@@ -25,12 +25,12 @@ const playersAvailable = [
   { id: 10, name: "SomeoneExtra", rankingPoints: 100 },
 ];
 
-function displayPlayerCards() {
+function generatePlayerDivs() {
   let players = [];
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < playersAvailable.length; i++) {
     players.push(
-      <div className="playerCardDiv">
+      <div id={playersAvailable[i].id} className="playerCardDiv">
         <PlayerCard
           name={playersAvailable[i].name}
           rankingPoints={playersAvailable[i].rankingPoints}
@@ -39,11 +39,17 @@ function displayPlayerCards() {
       </div>
     );
   }
-
   return players;
 }
 
-export default function MyTeam(props) {
+export default function MyTeam() {
+  /*
+  const [playersSelectedCount, setPlayersSelectedCount] = useState(0);
+  const [playerIDs, setPlayerIDs] = useState([]);
+  const [playerRankingPoints, setPlayerRankingPoints] = useState(0);
+  const [canSavePlayers, setCanSavePlayers] = useState(true);
+*/
+
   return (
     <div className="MyTeam">
       <NavBar />
@@ -60,7 +66,7 @@ export default function MyTeam(props) {
               <Editable
                 style={{ marginLeft: "5%", marginRight: "5%" }}
                 w="90%"
-                defaultValue={props.name}
+                defaultValue="Team Name"
               >
                 <EditablePreview style={{ color: "white" }} />
                 <EditableInput style={{ color: "white" }} />
@@ -103,11 +109,9 @@ export default function MyTeam(props) {
               </Button>
             </Tooltip>
           </div>
-          <div className="playerDivs">{displayPlayerCards()}</div>
+          <div className="playerDivs">{generatePlayerDivs()}</div>
         </div>
       </div>
     </div>
   );
 }
-
-/*<Icon name="warning" size="32px" color="red.500" />*/
