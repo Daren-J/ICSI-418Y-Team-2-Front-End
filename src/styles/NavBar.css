@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 .NavBar {
   width: 100%;
   background: rgb(24, 20, 20);
@@ -54,66 +54,3 @@
   color: lightseagreen;
   cursor: pointer;
 }
-=======
-body {
-  background: rgb(24, 20, 20);
-}
-
-.NavBar {
-  width: 100%;
-}
-
-nav {
-  width: 100%;
-}
-
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  top: 0;
-  overflow: hidden;
-  background-color: rgb(10, 53, 66);
-  color: rgb(59, 26, 26);
-  box-shadow: 0 10px 15px -6px black;
-}
-
-li {
-  display: inline-block;
-  float: left;
-  padding-right: 10px;
-  padding-left: 10px;
-  background-color: rgb(10, 53, 66);
-  cursor: pointer;
-}
-
-li:nth-last-child(1) {
-  float: right;
-}
-
-li:nth-last-child(2) {
-  float: right;
-}
-
-.h2tagNav {
-  background-color: rgb(10, 53, 66);
-  font-family: Arial, Helvetica, sans-serif;
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 10px 10px;
-  text-decoration: none;
-  font-size: 16px;
-  border-bottom: 3px solid transparent;
-}
-
-.h2tagNav:hover {
-  color: lightseagreen;
-  cursor: pointer;
-}
-
-div {
-  margin-bottom: 20px;
-}
->>>>>>> eaa47c7fb014c228141ea283b1a2446a9079864e

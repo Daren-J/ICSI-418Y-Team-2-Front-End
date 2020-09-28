@@ -1,24 +1,16 @@
 import React, { useState } from "react";
 import "../styles/PlayerCard.css";
 import ProgressBar from "./ProgressBar";
-import {
-  VisuallyHidden,
-  ControlBox,
-  Icon,
-  Box,
-  Checkbox,
-} from "@chakra-ui/core";
+import { Checkbox } from "@chakra-ui/core";
 
 export default function PlayerCard(props) {
+  const [isChecked, setIsChecked] = useState(false);
 
-    const [isChecked, setIsChecked] = useState(false);
+  function changeCheckedState(value) {
+    setIsChecked(!value);
+  }
 
-    function changeCheckedState (value) {
-      setIsChecked(!value);
-    }
-
-
-    return (
+  return (
     <div className="PlayerCard">
       <img
         className="PlayerImage"
