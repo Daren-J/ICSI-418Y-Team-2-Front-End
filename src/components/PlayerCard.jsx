@@ -37,7 +37,25 @@ export default function PlayerCard(props) {
           variantColor="red"
           defaultIsunChecked
           style={{ marginBottom: "4%" }}
-          onChange={() => changeCheckedState(isChecked)}
+          onChange={(event) => {
+            setIsChecked(!isChecked);
+            const PlayerDataChecked = {
+              id: props.id,
+              name: props.name,
+              rp: props.rankingPoints,
+            };
+
+            const PlayerDataUnChecked = {
+              id: -props.id,
+              name: -props.name,
+              rp: -props.rankingPoints,
+            };
+            if (isChecked) {
+              props.onChange(PlayerDataUnChecked);
+            } else {
+              props.onChange(PlayerDataChecked);
+            }
+          }}
         >
           Select Player
         </Checkbox>

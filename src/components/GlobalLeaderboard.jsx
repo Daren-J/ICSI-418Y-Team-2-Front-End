@@ -3,62 +3,62 @@ import "../styles/GlobalLeaderboard.css";
 
 const mockTeams = [
   {
-    TeamName: "Team 1 Name",
+    TeamName: "User 1",
     Points: 86,
     Position: 1,
   },
   {
-    TeamName: "Team 2 Name",
+    TeamName: "User 2",
     Points: 77,
     Position: 2,
   },
   {
-    TeamName: "Team 3 Name",
+    TeamName: "User 3",
     Points: 74,
     Position: 3,
   },
   {
-    TeamName: "Team 4 Name",
+    TeamName: "User 4",
     Points: 54,
     Position: 4,
   },
   {
-    TeamName: "Team 5 Name",
+    TeamName: "User 5",
     Points: 47,
     Position: 5,
   },
   {
-    TeamName: "Team 6 Name",
+    TeamName: "User 6",
     Points: 43,
     Position: 6,
   },
   {
-    TeamName: "Team 7 Name",
+    TeamName: "User 7",
     Points: 42,
     Position: 7,
   },
   {
-    TeamName: "Team 8 Name",
+    TeamName: "User 8",
     Points: 31,
     Position: 8,
   },
   {
-    TeamName: "Team 9 Name",
+    TeamName: "User 9",
     Points: 24,
     Position: 9,
   },
   {
-    TeamName: "Team 10 Name",
+    TeamName: "User 10",
     Points: 21,
     Position: 10,
   },
   {
-    TeamName: "Team 11 Name",
+    TeamName: "User 11",
     Points: 18,
     Position: 11,
   },
   {
-    TeamName: "Team 12 Name",
+    TeamName: "User 12",
     Points: 14,
     Position: 12,
   },
@@ -105,7 +105,7 @@ export default function GlobalLeaderboard() {
         <h3 className="h3TagLeaderboard">#</h3>
       </div>
       <div className="LeaderboardTeamName">
-        <h3 className="h3TagLeaderboard">TeamName</h3>
+        <h3 className="h3TagLeaderboard">User</h3>
       </div>
       <div className="LeaderboardPoints">
         <h3 className="h3TagLeaderboard">Points</h3>

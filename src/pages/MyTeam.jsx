@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import NavBar from "../components/NavBar";
 import "../styles/MyTeam.css";
 import ProgressBar from "../components/ProgressBar";
@@ -25,30 +25,33 @@ const playersAvailable = [
   { id: 10, name: "SomeoneExtra", rankingPoints: 100 },
 ];
 
-function generatePlayerDivs() {
-  let players = [];
-
-  for (let i = 0; i < playersAvailable.length; i++) {
-    players.push(
-      <div id={playersAvailable[i].id} className="playerCardDiv">
-        <PlayerCard
-          name={playersAvailable[i].name}
-          rankingPoints={playersAvailable[i].rankingPoints}
-          id={playersAvailable[i].id}
-        />
-      </div>
-    );
-  }
-  return players;
-}
-
 export default function MyTeam() {
-  /*
-  const [playersSelectedCount, setPlayersSelectedCount] = useState(0);
+  const [playersSelectedCount, setPlayersSelectedCount] = useState();
   const [playerIDs, setPlayerIDs] = useState([]);
   const [playerRankingPoints, setPlayerRankingPoints] = useState(0);
   const [canSavePlayers, setCanSavePlayers] = useState(true);
-*/
+
+  function generatePlayerDivs() {
+    let players = [];
+
+    for (let i = 0; i < playersAvailable.length; i++) {
+      players.push(
+        <div className="playerCardDiv">
+          <PlayerCard
+            onChange={(value) => {
+              playerIDs.push(value.id);
+              setPlayersSelectedCount(playersSelectedCount + 1);
+              setPlayerRankingPoints(playerRankingPoints + value.rp);
+            }}
+            name={playersAvailable[i].name}
+            rankingPoints={playersAvailable[i].rankingPoints}
+            id={playersAvailable[i].id}
+          />
+        </div>
+      );
+    }
+    return players;
+  }
 
   return (
     <div className="MyTeam">
@@ -78,7 +81,7 @@ export default function MyTeam() {
               statName="Combined Player RP (MAX: 400)"
               color="red"
               maxValue={400}
-              value={200}
+              value={playerRankingPoints}
             />
           </div>
         </div>
