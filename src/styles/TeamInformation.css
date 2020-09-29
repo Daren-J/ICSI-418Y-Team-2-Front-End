@@ -42,7 +42,7 @@
 
 .teamDivs {
   float: left;
-  background-color: brown;
+  background-color: rgb(43, 109, 129);
   display: flex;
   overflow: hidden;
   width: 66%;

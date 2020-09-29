@@ -1,0 +1,26 @@
+.teamMatchModal {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.team1Match {
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+
+.team2Match {
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+
+.team1Tag {
+    color: red;
+}
+
+.team2Tag {
+    color: violet;
+}

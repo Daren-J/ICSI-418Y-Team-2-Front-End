@@ -10,6 +10,7 @@ import {
   Icon,
   Button,
   Tooltip,
+  useToast,
 } from "@chakra-ui/core";
 
 const playersAvailable = [
@@ -30,6 +31,8 @@ export default function MyTeam() {
   const [playerIDs, setPlayerIDs] = useState([]);
   const [playerRankingPoints, setPlayerRankingPoints] = useState(0);
   const [canSavePlayers, setCanSavePlayers] = useState(true);
+
+  const toast = useToast();
 
   function generatePlayerDivs() {
     let players = [];
@@ -88,7 +91,19 @@ export default function MyTeam() {
         <div className="TeamPlayerSelection">
           <div className="playerSelectionNav">
             <Tooltip label="Save Changes" placement="bottom" bg="blue.500">
-              <Button className="SaveButton" variantColor="blue">
+              <Button
+                className="SaveButton"
+                variantColor="blue"
+                onClick={() =>
+                  toast({
+                    title: "Options Saved!",
+                    description: "We've saved your players for you!",
+                    status: "success",
+                    duration: 2000,
+                    isClosable: true,
+                  })
+                }
+              >
                 Save{" "}
                 <Icon
                   marginLeft="0px"
@@ -100,7 +115,20 @@ export default function MyTeam() {
               </Button>
             </Tooltip>
             <Tooltip label="Cancel Changes" placement="bottom" bg="red.600">
-              <Button className="SaveButton" variantColor="red">
+              <Button
+                className="SaveButton"
+                variantColor="red"
+                onClick={() =>
+                  toast({
+                    title: "Changes Cancelled!",
+                    description: "Player Select has reset!",
+                    status: "error",
+                    duration: 2000,
+                    isClosable: true,
+                  })
+                  
+                }
+              >
                 Cancel{" "}
                 <Icon
                   marginLeft="0px"

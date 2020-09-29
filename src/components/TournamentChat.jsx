@@ -7,7 +7,7 @@ export default function TournamentChat() {
   //const [buttonState, setButtonState] = useState(false);
 
   return (
-    <div id="tchatdiv" className="MainChatBox">
+    <div style={{ width: "30%", marginLeft: "34.5%" }} id="tchatdiv" className="MainChatBox">
       <h3 className="chatTitle">Tournament Chat</h3>
       <div className="innerChatDiv">{messagesList}</div>
       <form className="sendMessageForm">

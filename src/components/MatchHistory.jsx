@@ -38,7 +38,11 @@ function generateAllMockMatches() {
       </div>
     );
   }
-  return <div className="newsBox">{output}</div>;
+  return (
+    <div style={{ marginLeft: "34.5%" }} className="newsBox">
+      {output}
+    </div>
+  );
 }
 
 export default function MatchHistory() {
