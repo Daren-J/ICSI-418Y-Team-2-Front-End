@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../styles/TournamentCard.css";
 import { Button, Image, Progress, Stack } from "@chakra-ui/core";
+import { Link } from "react-router-dom";
 
 export default function TournamentCard({
   type,
@@ -24,7 +25,12 @@ export default function TournamentCard({
   const [TourID, setTourID] = useState("");
   const [ImageSrc, setImageSrc] = useState("");
   const [TourDetail, setTourDetail] = useState(false);
-  const [myTeamRankingPoints, setMyTeamRankingPoints] = useState();
+  const [allTeamAverageRP, setAllTeamAverageRP] = useState();
+  const [numberOfTeams, setNumberOfTeams] = useState();
+  const [myTeamRPTourCard, setTeamRPTourCard] = useState();
+  const [totalMatches, setTotalMatches] = useState();
+  const [matchesPlayed, setMatchesPlayed] = useState();
+  const [matchesRemaining, setMatchesRemaining] = useState();
 
   useEffect(() => {
     setTourType(`${type} Tournament`);
@@ -63,17 +69,41 @@ export default function TournamentCard({
       </div>
       {TourDetail == true ? (
         <div className="StatsTourCard">
-          <div id="TourRegisteredTeams">Registered Teams: {`16`}</div>
-          <div id="AverageRankingPoints">Average Team RP: {`360/400`}</div>
+          <div id="TourRegisteredTeams">Registered Teams: {16}</div>
+          <div id="AverageRankingPoints">Average Team RP: {360}/400</div>
+          <div id="TourTotalMatches">Total Matches: {16 * 2}</div>
+          <div id="TourMatchesRemaining">
+            Matches Remaining: {12}/{16 * 2}
+          </div>
           <Progress
+            borderRadius="15px"
             hasStripe
             isAnimated
             color="red"
             size="lg"
             value={(360 / 400) * 100}
           />
-          <div id="TeamEarnedPoints">Team Ranking Points: {`400/400`}</div>
-          <Progress hasStripe isAnimated color="pink" size="lg" value={10} />
+          <div id="TeamEarnedPoints">My Team's RP: {150}/400</div>
+          <Progress
+            borderRadius="15px"
+            hasStripe
+            isAnimated
+            color="pink"
+            size="lg"
+            value={(150 / 400) * 100}
+          />
+
+          <div id="TourMatchesPlayed">
+            Matches Played: {16 * 2 - 12}/{16 * 2}
+          </div>
+          <Progress
+            borderRadius="15px"
+            hasStripe
+            isAnimated
+            color="yellow"
+            size="lg"
+            value={((16 * 2 - 12) / (16 * 2)) * 100}
+          />
         </div>
       ) : (
         <div className="ViewTournamentButtonDiv">

@@ -2,7 +2,7 @@ import { FormControl, Input, Button } from "@chakra-ui/core";
 import React from "react";
 import "../styles/Chat.css";
 
-export default function Chat(props) {
+export default function Chat() {
   return (
     <div className="ChatBox">
       <div className="ChatTitleSection">

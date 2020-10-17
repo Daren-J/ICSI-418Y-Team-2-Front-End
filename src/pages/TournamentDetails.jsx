@@ -3,6 +3,8 @@ import NavBar from "../components/NavBar";
 import "../styles/TournamentDetails.css";
 import { Tab, TabList, TabPanels, Tabs, TabPanel } from "@chakra-ui/core";
 import TournamentCard from "../components/TournamentCard";
+import Chat from "../components/Chat";
+import Leaderboard from "../components/Leaderboard";
 
 export default function TournamentDetails(props) {
   return (
@@ -31,42 +33,39 @@ export default function TournamentDetails(props) {
             <TabList h="70px">
               <Tab
                 mt="-1px"
-                bg="rgb(58, 29, 153, 0.8)"
+                bg="rgb(114, 15, 15, 0.671)"
                 style={{
                   color: "white",
                   border: "none",
                   boxShadow: "none",
                   outline: "none",
                   borderRadius: 0,
-                  border: "1px solid white",
                 }}
               >
                 My Team
               </Tab>
               <Tab
                 mt="-1px"
-                bg="rgb(58, 29, 153, 0.8)"
+                bg="rgba(34, 168, 168, 0.671)"
                 style={{
                   color: "white",
                   border: "none",
                   boxShadow: "none",
                   outline: "none",
                   borderRadius: 0,
-                  border: "1px solid white",
                 }}
               >
                 Past and Upcoming Matches
               </Tab>
               <Tab
                 mt="-1px"
-                bg="rgb(58, 29, 153, 0.8)"
+                bg="rgb(58, 29, 153, 0.671)"
                 style={{
                   color: "white",
                   border: "none",
                   boxShadow: "none",
                   outline: "none",
                   borderRadius: 0,
-                  border: "1px solid white",
                 }}
               >
                 Chat and Leaderboard
@@ -75,19 +74,20 @@ export default function TournamentDetails(props) {
 
             <TabPanels color="black">
               <TabPanel>
-                <div id="TourDetailsPanel1">PANEL 1</div>
+                <div id="TourDetailsPanel1">
+                  {/* Team Selection */}
+                </div>
               </TabPanel>
               <TabPanel>
-                <div id="TourDetailsPanel2">PANEL 2</div>
+                <div id="TourDetailsPanel2">
+                  {/* Match History Component, Upcoming Matches Component */}
+                </div>
               </TabPanel>
               <TabPanel>
-                <div id="TourDetailsPanel3">PANEL 3</div>
-              </TabPanel>
-              <TabPanel>
-                <div id="TourDetailsPanel4">PANEL 4</div>
-              </TabPanel>
-              <TabPanel>
-                <div id="TourDetailsPanel5">PANEL 5</div>
+                <div id="TourDetailsPanel3">
+                  <Chat />
+                  <Leaderboard />
+                </div>
               </TabPanel>
             </TabPanels>
           </Tabs>
