@@ -29,23 +29,123 @@ const mockNews = [
   },
 ];
 
-function generateAllMockNews() {
-  let output = [];
-
-  for (let i = 0; i < 5; i++) {
-    output.push(
-      <div className="news">
-        <div className="news-inner">
-          <h1 className="hTagLeagueNews">{mockNews[i].title}</h1>
-          <h3 className="hTagLeagueNews">{mockNews[i].description}</h3>
-        </div>
-        {i !== 4 ? <hr className="hrTagLeagueNews" /> : null}
-      </div>
-    );
-  }
-  return <div className="newsBox">{output}</div>;
-}
-
 export default function LeagueNews() {
-  return generateAllMockNews();
+  return (
+    <div className="LeagueNews">
+      <div className="AnnouncementsTitleSection">
+        <h1 id="announcementsTitle">Announcements</h1>
+      </div>
+
+      <div className="InnerAnnouncementsDiv">
+        <div className="AnnouncementTab" style={{ color: "black" }}>
+          <h1 id="announcementTabTitle">Announcement Title</h1>
+          <h4 id="announcementTabDesc">
+            Announcement Details go here! Announcement Details go here!
+            Announcement Details go here! Announcement Details go here!{" "}
+            Announcement Details go here! Announcement Details go here!
+            Announcement Details go here! Announcement Details go here!{" "}
+          </h4>
+        </div>
+        <div className="AnnouncementTab" style={{ color: "black" }}>
+          <h1 id="announcementTabTitle">Announcement Title</h1>
+          <h4 id="announcementTabDesc">
+            Announcement Details go here! Announcement Details go here!
+            Announcement Details go here! Announcement Details go here!{" "}
+            Announcement Details go here! Announcement Details go here!
+            Announcement Details go here! Announcement Details go here!{" "}
+          </h4>
+        </div>
+        <div className="AnnouncementTab" style={{ color: "black" }}>
+          <h1 id="announcementTabTitle">Announcement Title</h1>
+          <h4 id="announcementTabDesc">
+            Announcement Details go here! Announcement Details go here!
+            Announcement Details go here! Announcement Details go here!{" "}
+            Announcement Details go here! Announcement Details go here!
+            Announcement Details go here! Announcement Details go here!{" "}
+          </h4>
+        </div>
+        <div className="AnnouncementTab" style={{ color: "black" }}>
+          <h1 id="announcementTabTitle">Announcement Title</h1>
+          <h4 id="announcementTabDesc">
+            Announcement Details go here! Announcement Details go here!
+            Announcement Details go here! Announcement Details go here!{" "}
+            Announcement Details go here! Announcement Details go here!
+            Announcement Details go here! Announcement Details go here!{" "}
+          </h4>
+        </div>
+        <div className="AnnouncementTab" style={{ color: "black" }}>
+          <h1 id="announcementTabTitle">Announcement Title</h1>
+          <h4 id="announcementTabDesc">
+            Announcement Details go here! Announcement Details go here!
+            Announcement Details go here! Announcement Details go here!{" "}
+            Announcement Details go here! Announcement Details go here!
+            Announcement Details go here! Announcement Details go here!{" "}
+          </h4>
+        </div>
+        <div className="AnnouncementTab" style={{ color: "black" }}>
+          <h1 id="announcementTabTitle">Announcement Title</h1>
+          <h4 id="announcementTabDesc">
+            Announcement Details go here! Announcement Details go here!
+            Announcement Details go here! Announcement Details go here!{" "}
+            Announcement Details go here! Announcement Details go here!
+            Announcement Details go here! Announcement Details go here!{" "}
+          </h4>
+        </div>
+        <div className="AnnouncementTab" style={{ color: "black" }}>
+          <h1 id="announcementTabTitle">Announcement Title</h1>
+          <h4 id="announcementTabDesc">
+            Announcement Details go here! Announcement Details go here!
+            Announcement Details go here! Announcement Details go here!{" "}
+            Announcement Details go here! Announcement Details go here!
+            Announcement Details go here! Announcement Details go here!{" "}
+          </h4>
+        </div>
+        <div className="AnnouncementTab" style={{ color: "black" }}>
+          <h1 id="announcementTabTitle">Announcement Title</h1>
+          <h4 id="announcementTabDesc">
+            Announcement Details go here! Announcement Details go here!
+            Announcement Details go here! Announcement Details go here!{" "}
+            Announcement Details go here! Announcement Details go here!
+            Announcement Details go here! Announcement Details go here!{" "}
+          </h4>
+        </div>
+        <div className="AnnouncementTab" style={{ color: "black" }}>
+          <h1 id="announcementTabTitle">Announcement Title</h1>
+          <h4 id="announcementTabDesc">
+            Announcement Details go here! Announcement Details go here!
+            Announcement Details go here! Announcement Details go here!{" "}
+            Announcement Details go here! Announcement Details go here!
+            Announcement Details go here! Announcement Details go here!{" "}
+          </h4>
+        </div>
+        <div className="AnnouncementTab" style={{ color: "black" }}>
+          <h1 id="announcementTabTitle">Announcement Title</h1>
+          <h4 id="announcementTabDesc">
+            Announcement Details go here! Announcement Details go here!
+            Announcement Details go here! Announcement Details go here!{" "}
+            Announcement Details go here! Announcement Details go here!
+            Announcement Details go here! Announcement Details go here!{" "}
+          </h4>
+        </div>
+        <div className="AnnouncementTab" style={{ color: "black" }}>
+          <h1 id="announcementTabTitle">Announcement Title</h1>
+          <h4 id="announcementTabDesc">
+            Announcement Details go here! Announcement Details go here!
+            Announcement Details go here! Announcement Details go here!{" "}
+            Announcement Details go here! Announcement Details go here!
+            Announcement Details go here! Announcement Details go here!{" "}
+          </h4>
+        </div>
+        <div className="AnnouncementTab" style={{ color: "black" }}>
+          <h1 id="announcementTabTitle">Announcement Title</h1>
+          <h4 id="announcementTabDesc">
+            Announcement Details go here! Announcement Details go here!
+            Announcement Details go here! Announcement Details go here!{" "}
+            Announcement Details go here! Announcement Details go here!
+            Announcement Details go here! Announcement Details go here!{" "}
+          </h4>
+        </div>
+      </div>
+    </div>
+  );
 }

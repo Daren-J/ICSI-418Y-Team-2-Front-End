@@ -1,0 +1,17 @@
+.LoginRegister {
+    width: 500px;
+    height: 570px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.75);
+    padding: 10px 20px 20px 20px;
+    border-radius: 25px;
+    color: rgb(179, 35, 35);
+}
+
+.registerTab {
+
+}
+
+.loginTab {
+
+}

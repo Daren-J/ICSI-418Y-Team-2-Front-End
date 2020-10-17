@@ -24,27 +24,11 @@ const mockMatches = [
   },
 ];
 
-function generateAllMockMatches() {
-  let output = [];
-
-  for (let i = 0; i < 5; i++) {
-    output.push(
-      <div className="news">
-        <div className="news-inner">
-          <h1 className="hTagLeagueNews">{mockMatches[i].title}</h1>
-          <h3 className="hTagLeagueNews">{mockMatches[i].description}</h3>
-        </div>
-        {i !== 4 ? <hr className="hrTagLeagueNews" /> : null}
-      </div>
-    );
-  }
-  return (
-    <div style={{ marginLeft: "34.5%" }} className="newsBox">
-      {output}
-    </div>
-  );
-}
 
 export default function MatchHistory() {
-  return generateAllMockMatches();
+  return (
+    <div className="MatchHistory">
+
+    </div>
+  );
 }

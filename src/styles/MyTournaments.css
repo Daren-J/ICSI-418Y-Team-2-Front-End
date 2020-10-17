@@ -1,26 +1,15 @@
-.teamMatchModal {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    text-align: center;
+.innerMyTournaments {
+  margin-top: 5%;
+  width: 100%;
+  display: flex;
 }
 
-.team1Match {
-    float: left;
-    width: 50%;
-    text-align: center;
+#GlobalTour {
+  margin-left: auto;
+  box-shadow: 0 5px 25px 10px black;
 }
 
-.team2Match {
-    float: left;
-    width: 50%;
-    text-align: center;
-}
-
-.team1Tag {
-    color: red;
-}
-
-.team2Tag {
-    color: violet;
+#FriendsTour {
+  margin: auto;
+  box-shadow: 0 5px 25px 10px black;
 }

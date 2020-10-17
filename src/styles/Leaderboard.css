@@ -1,0 +1,49 @@
+.Leaderboard {
+  width: 500px;
+  background-color: white;
+  height: 600px;
+  padding-bottom: 75px;
+  border: 1px solid black;
+  border-radius: 25px;
+  text-align: center;
+}
+
+.innerLeaderboard {
+  width: 500px;
+  height: 600px;
+  background-color: rgb(23, 24, 92);
+  text-align: center;
+  overflow-y: scroll;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.LeaderboardTable {
+  width: 100%;
+  height: 900px;
+  border-collapse: collapse;
+  border: 1px solid white;
+}
+
+.LeaderboardRow {
+  border: 1px solid white;
+}
+
+.LeaderboardColumn {
+  border: 1px solid white;
+}
+
+#PositionTag {
+  padding: 0;
+  margin: 0;
+}
+
+#TeamNameTag {
+  padding: 0;
+  margin: 0;
+}
+
+#PointsTag {
+  padding: 0;
+  margin: 0;
+}

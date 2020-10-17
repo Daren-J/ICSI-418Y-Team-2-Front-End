@@ -1,42 +1,61 @@
-body {
-  color: white;
+.LeagueNews {
+  background-color: white;
+  width: 550px;
+  height: 600px;
+  border: 1px solid black;
+  border-radius: 25px;
+  padding-bottom: 35px;
 }
 
-.newsBox {
-  float: left;
-  border-color: white;
-  color: white;
-  border: 4px solid rgb(10, 53, 66);
-  margin: 3%;
+#announcementsTitle {
+  color: black;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  border-bottom: 1px solid black;
+}
+
+.InnerAnnouncementsDiv {
+  width: 550px;
+  height: 560px;
+  margin: auto;
+  overflow-y: auto;
+  border-bottom: 1px solid black;
+}
+
+#hrAnnouncementsTitle {
+  padding: 0;
+  margin: 0;
+}
+
+.AnnouncementsTitleSection {
+  padding: 0;
+  margin: 0;
+}
+
+.AnnouncementTab {
+  width: 100%;
+  min-height: 150px;
+  background-color: rgb(23, 24, 92);
   margin-bottom: 0;
-  padding-bottom: 0;
-  width: 30%;
-  border-radius: 5px;
-  box-shadow: 10px 10px 10px 5px black;
+  border-bottom: 1px solid white;
+  margin: auto;
 }
 
-.news {
-  padding: 0;
-  margin: 0;
+.AnnouncementTab:last-child {
+  border: none;
 }
 
-.news-inner {
-  padding: 22px;
-  margin: 0;
-  background: rgb(37, 28, 28);
+#announcementTabTitle {
+  color: white;
+  margin-top: 0;
+  margin-bottom: 2%;
+  text-align: center;
 }
 
-.hrTagLeagueNews {
-  padding: 0;
-  margin: 0;
-  border: 2px solid rgb(10, 53, 66);
-}
-
-.hTagLeagueNews {
-  padding: 0;
-  margin: 0;
-}
-
-.news:hover .hTagLeaderboard:hover {
-  background-color: rgb(109, 54, 54);
+#announcementTabDesc {
+  color: white;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
 }

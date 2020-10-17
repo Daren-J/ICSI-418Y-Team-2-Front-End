@@ -1,0 +1,118 @@
+.TournamentCard {
+  width: 400px;
+  min-height: 400px;
+  max-height: 800px;
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  overflow: hidden;
+}
+
+.TournamentCardImage {
+  height: 210px;
+  width: 90%;
+  margin: 0;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 20px;
+  border: 1px solid black;
+}
+
+#TournamentCardName {
+  text-align: center;
+  font-size: 23px;
+  margin-top: 10px;
+}
+
+#TournamentCardLocked {
+  font-size: 20px;
+  margin-top: 10px;
+  margin-left: 10%;
+  width: 40%;
+  float: left;
+}
+
+#TournamentCardActive {
+  font-size: 20px;
+  margin-top: 10px;
+  margin-left: 10%;
+  width: 40%;
+  float: left;
+}
+
+#TournamentCardID {
+  font-size: 20px;
+  margin-top: 10px;
+  margin-left: 10%;
+  width: 40%;
+  float: left;
+}
+
+#TournamentCardDates {
+  font-size: 20px;
+  margin-top: 10px;
+  margin-left: 10%;
+  width: 40%;
+  float: left;
+}
+
+#TCardActiveValue {
+  font-size: 20px;
+  margin-top: 10px;
+  margin-right: 10%;
+  width: 40%;
+  float: left;
+  text-align: center;
+}
+
+#TCardLockedValue {
+  font-size: 20px;
+  margin-top: 10px;
+  margin-right: 10%;
+  width: 40%;
+  float: left;
+  text-align: center;
+}
+
+#TCardDatesValue {
+  font-size: 20px;
+  margin-top: 10px;
+  margin-right: 10%;
+  width: 40%;
+  float: left;
+  text-align: center;
+}
+
+#TCardIDValue {
+  font-size: 20px;
+  margin-top: 10px;
+  margin-right: 10%;
+  width: 40%;
+  float: left;
+  text-align: center;
+}
+
+.ViewTournamentButtonDiv {
+  float: left;
+  text-align: center;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.StatsTourCard {
+  float: left;
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+#GlobalTourRegisteredTeams {
+  margin-bottom: 10px;
+}
+
+#TeamRankingPoints {
+}

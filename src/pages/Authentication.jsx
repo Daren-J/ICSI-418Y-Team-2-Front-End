@@ -1,10 +1,11 @@
 import React from "react";
-import NavBar from "../components/NavBar";
+import LoginRegister from "../components/LoginRegister";
+import "../styles/Authentication.css";
 
 export default function Authentication() {
   return (
     <div className="Authentication">
-      <NavBar />
+      <LoginRegister />
     </div>
   );
 }

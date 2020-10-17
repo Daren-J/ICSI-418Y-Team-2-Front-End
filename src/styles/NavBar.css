@@ -1,11 +1,31 @@
 .NavBar {
-  width: 100%;
-  background: rgb(24, 20, 20);
-  margin-bottom: 20px;
+  max-width: 1918px;
+  height: 65px;
+  background-color: rgb(10, 53, 66);
+  border-bottom: 1px solid white;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  box-shadow: 0 13px 13px -1px rgb(66, 55, 55);
 }
 
 .NavBar-nav {
   width: 100%;
+}
+
+.h2tagNavLogo {
+  font-family: Arial, Helvetica, sans-serif;
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  text-decoration: none;
+  font-size: 24px;
+  margin-top: 18px;
+}
+
+.h2tagNavLogo:hover {
+  color: rgb(224, 140, 31);
+  cursor: pointer;
 }
 
 .NavBar-ul {
@@ -14,9 +34,6 @@
   padding: 0;
   top: 0;
   overflow: hidden;
-  background-color: rgb(10, 53, 66);
-  color: rgb(59, 26, 26);
-  box-shadow: 0 10px 15px -6px black;
 }
 
 .NavBar-li {
@@ -24,7 +41,6 @@
   float: left;
   padding-right: 10px;
   padding-left: 10px;
-  background-color: rgb(10, 53, 66);
   cursor: pointer;
 }
 
@@ -37,19 +53,17 @@
 }
 
 .h2tagNav {
-  background-color: rgb(10, 53, 66);
   font-family: Arial, Helvetica, sans-serif;
   float: left;
   display: block;
   color: #f2f2f2;
   text-align: center;
-  padding: 10px 10px;
   text-decoration: none;
-  font-size: 20px;
-  border-bottom: 3px solid transparent;
+  font-size: 24px;
+  margin-top: 18px;
 }
 
 .h2tagNav:hover {
-  color: lightseagreen;
+  color: rgb(224, 140, 31);
   cursor: pointer;
 }
