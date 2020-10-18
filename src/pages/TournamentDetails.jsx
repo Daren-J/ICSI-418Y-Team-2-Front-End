@@ -5,6 +5,7 @@ import { Tab, TabList, TabPanels, Tabs, TabPanel } from "@chakra-ui/core";
 import TournamentCard from "../components/TournamentCard";
 import Chat from "../components/Chat";
 import Leaderboard from "../components/Leaderboard";
+import TeamSelection from "../components/TeamSelection";
 
 export default function TournamentDetails(props) {
   return (
@@ -74,9 +75,7 @@ export default function TournamentDetails(props) {
 
             <TabPanels color="black">
               <TabPanel>
-                <div id="TourDetailsPanel1">
-                  {/* Team Selection */}
-                </div>
+                <div id="TourDetailsPanel1"><TeamSelection /></div>
               </TabPanel>
               <TabPanel>
                 <div id="TourDetailsPanel2">

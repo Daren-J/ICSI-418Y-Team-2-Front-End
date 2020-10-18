@@ -33,16 +33,19 @@
 #TourDetailsPanel1 {
   height: 740px;
   background-color: rgb(114, 15, 15, 0.671);
+  margin-top: 1px;
 }
 
 #TourDetailsPanel2 {
   height: 740px;
   background-color: rgba(34, 168, 168, 0.671);
+  margin-top: 1px;
 }
 
 #TourDetailsPanel3 {
   height: 740px;
   background-color: rgb(58, 29, 153, 0.671);
+  margin-top: 1px;
 }
 
 .ChatBox {
