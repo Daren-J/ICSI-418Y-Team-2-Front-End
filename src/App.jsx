@@ -14,6 +14,7 @@ import LoginRegister from "./components/LoginRegister";
 import TournamentCard from "./components/TournamentCard";
 import MyTournaments from "./pages/MyTournaments";
 import TournamentDetails from "./pages/TournamentDetails";
+import ProfilePage from "./pages/ProfilePage";
 
 export default function App() {
   return (

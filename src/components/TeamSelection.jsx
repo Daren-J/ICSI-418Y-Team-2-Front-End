@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/core";
 import PlayerCard from "./PlayerCard";
 import { playersAvailable } from "../services/playersAvailable";
+import { MdRefresh } from "react-icons/md";
 
 export default function TeamSelection({ setMyTeamRP }) {
   const [playerRankingPoints, setPlayerRankingPoints] = useState(0);
@@ -114,6 +115,30 @@ export default function TeamSelection({ setMyTeamRP }) {
     return players;
   }
 
+  function getActivePlayers(data) {
+    let players = [];
+    let rosterData = [];
+    for (let i = 0; i < 5; i++) {
+      rosterData.push(getPlayerDataById(data[i]));
+      players.push(
+        <PlayerCard
+          name={rosterData[i].name}
+          rankingPoints={rosterData[i].rankingPoints}
+          id={rosterData[i].id}
+          pts2={rosterData[i].pts2}
+          pts3={rosterData[i].pts3}
+          asst={rosterData[i].asst}
+          ft={rosterData[i].ft}
+          b={rosterData[i].b}
+          rb={rosterData[i].rb}
+          st={rosterData[i].st}
+          type="NO"
+        />
+      );
+    }
+    return players;
+  }
+
   return (
     <div className="TeamSelection">
       <div className="NavTeamSelection">
@@ -169,40 +194,68 @@ export default function TeamSelection({ setMyTeamRP }) {
 
             <TabPanels borderTop="1px solid white;" color="white">
               <TabPanel>
-                <div className="SecondaryTabsTeamStats"></div>
+                {isLockedIn ? (
+                  <div className="SecondaryTabsTeamStats">
+                    {getActivePlayers(activePlayers)}
+                  </div>
+                ) : (
+                  <div className="SecondaryTabsTeamStats">
+                    <h1
+                      style={{
+                        float: "left",
+                        margin: "auto",
+                      }}
+                    >
+                      NO PLAYER DATA
+                    </h1>
+                  </div>
+                )}
               </TabPanel>
               {isLockedIn ? (
                 <TabPanel>
-                  <div className="ifLockedInButton">
-                    <Tooltip
-                      label="Cancel Changes"
-                      placement="bottom"
-                      bg="red.600"
-                    >
-                      <Button
-                        variantColor="red"
-                        onClick={() => {
-                          toast({
-                            title: "Active Players Un-Locked!",
-                            description:
-                              "Your Active players have been Un-Locked!",
-                            status: "error",
-                            duration: 2000,
-                            isClosable: true,
-                          });
-                          setIsLockedIn(false);
-                        }}
+                  <div
+                    style={{
+                      width: "200%",
+                      height: "680px",
+                      backgroundColor: "rgba(34, 168, 168, 0.8)",
+                    }}
+                  >
+                    <div className="ifLockedInButton">
+                      <Tooltip
+                        label="Unlock Players"
+                        placement="bottom"
+                        bg="red.600"
                       >
-                        Un-Lock{" "}
-                        <Icon
-                          marginLeft="0px"
-                          style={{ float: "left", marginLeft: "10px" }}
-                          name="not-allowed"
-                          size="28px"
-                          color="white"
-                        />
-                      </Button>
-                    </Tooltip>
+                        <Button
+                          variantColor="red"
+                          onClick={() => {
+                            toast({
+                              title: "Active Players Un-Locked!",
+                              description:
+                                "Your Active players have been Un-Locked!",
+                              status: "error",
+                              duration: 2000,
+                              isClosable: true,
+                            });
+                            setIsLockedIn(false);
+                            setLocked(true);
+                            rosterPlayers.splice(0, rosterPlayers.length);
+                            activePlayers.splice(0, activePlayers.length);
+                            setPlayerRankingPoints(0);
+                            setMyTeamRP(0);
+                          }}
+                        >
+                          Un-Lock{" "}
+                          <Icon
+                            marginLeft="0px"
+                            style={{ float: "left", marginLeft: "10px" }}
+                            name="not-allowed"
+                            size="28px"
+                            color="white"
+                          />
+                        </Button>
+                      </Tooltip>
+                    </div>
                   </div>
                 </TabPanel>
               ) : (
@@ -224,10 +277,7 @@ export default function TeamSelection({ setMyTeamRP }) {
         </div>
 
         {canLockIn ? (
-          <div
-            className="ActionsTeamSelection"
-            style={{ justifyItems: "center" }}
-          >
+          <div className="ActionsTeamSelection" style={{ textAlign: "center" }}>
             <Tooltip label="Save Changes" placement="bottom" bg="blue.500">
               <Button
                 variantColor="blue"
@@ -240,6 +290,7 @@ export default function TeamSelection({ setMyTeamRP }) {
                     isClosable: true,
                   });
                   setIsLockedIn(true);
+                  setCanLockIn(false);
                 }}
               >
                 Lock In{" "}
@@ -258,29 +309,3 @@ export default function TeamSelection({ setMyTeamRP }) {
     </div>
   );
 }
-
-/*
-<Tooltip label="Cancel Changes" placement="bottom" bg="red.600">
-              <Button
-                variantColor="red"
-                onClick={() =>
-                  toast({
-                    title: "Active Players Un-Locked!",
-                    description: "Your Active players have been Un-Locked!",
-                    status: "error",
-                    duration: 2000,
-                    isClosable: true,
-                  })
-                }
-              >
-                Un-Lock{" "}
-                <Icon
-                  marginLeft="0px"
-                  style={{ float: "left", marginLeft: "10px" }}
-                  name="not-allowed"
-                  size="28px"
-                  color="white"
-                />
-              </Button>
-            </Tooltip>
-            */

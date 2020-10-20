@@ -31,6 +31,10 @@
   width: 200%;
   height: 680px;
   background-color: rgb(114, 30, 0);
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  overflow-y: auto;
 }
 
 .SecondaryTabsRosterSelection {
@@ -58,4 +62,10 @@
   margin-top: 15px;
   margin-bottom: 15px;
   border: 1px solid white;
+}
+
+.ifLockedInButton {
+  float: left;
+  margin-left: 45%;
+  margin-top: 300px;
 }

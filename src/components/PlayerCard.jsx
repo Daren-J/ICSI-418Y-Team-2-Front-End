@@ -14,6 +14,7 @@ export default function PlayerCard({
   rb,
   st,
   onChange,
+  type
 }) {
   const [isChecked, setIsChecked] = useState(false);
   const [average2Pointers, setAverage2Pointers] = useState(0);
@@ -88,37 +89,39 @@ export default function PlayerCard({
           value={rankingPoints}
         />
       </div>
-      <div className="CheckboxDivPCard">
-        <Checkbox
-          id={`player${id}`}
-          size="lg"
-          variantColor="red"
-          defaultIsunChecked
-          onChange={(event) => {
-            setIsChecked(!isChecked);
-            const PlayerDataChecked = {
-              id: id,
-              name: name,
-              rp: rankingPoints,
-              count: 1,
-            };
+      {type !== "NO" ? (
+        <div className="CheckboxDivPCard">
+          <Checkbox
+            id={`player${id}`}
+            size="lg"
+            variantColor="red"
+            defaultIsunChecked
+            onChange={(event) => {
+              setIsChecked(!isChecked);
+              const PlayerDataChecked = {
+                id: id,
+                name: name,
+                rp: rankingPoints,
+                count: 1,
+              };
 
-            const PlayerDataUnChecked = {
-              id: id,
-              name: name,
-              rp: -rankingPoints,
-              count: -1,
-            };
-            if (isChecked) {
-              onChange(PlayerDataUnChecked);
-            } else {
-              onChange(PlayerDataChecked);
-            }
-          }}
-        >
-          Select Player
-        </Checkbox>
-      </div>
+              const PlayerDataUnChecked = {
+                id: id,
+                name: name,
+                rp: -rankingPoints,
+                count: -1,
+              };
+              if (isChecked) {
+                onChange(PlayerDataUnChecked);
+              } else {
+                onChange(PlayerDataChecked);
+              }
+            }}
+          >
+            Select Player
+          </Checkbox>
+        </div>
+      ) : null}
     </div>
   );
 }
