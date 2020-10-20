@@ -13,7 +13,7 @@ export default function TournamentDetails(props) {
 
   return (
     <div className="TournamentDetails">
-      <NavBar />
+      <NavBar handleLogout={props.handleLogout} />
       <div className="TourCardDetailsPageDiv">
         <TournamentCard
           type="Global"
@@ -25,7 +25,7 @@ export default function TournamentDetails(props) {
           dt="10"
           mt="15"
           yt="2020"
-          tourid="651456125"
+          tourid={props.tourIdProp}
           imgsrc="https://i.pinimg.com/originals/0d/62/c5/0d62c5a2849ad4e0722d01deba9e363a.jpg"
           tournamentDetail={true}
           myTeamRP={myTeamRP}
@@ -86,7 +86,10 @@ export default function TournamentDetails(props) {
               <TabPanel>
                 <div id="TourDetailsPanel2">
                   <MatchHistory type="Match History" bgColor="" />
-                  <MatchHistory type="Upcoming Matches" bgColor="rgb(180, 22, 62)" />
+                  <MatchHistory
+                    type="Upcoming Matches"
+                    bgColor="rgb(180, 22, 62)"
+                  />
                 </div>
               </TabPanel>
               <TabPanel>

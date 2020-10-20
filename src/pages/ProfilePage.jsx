@@ -12,10 +12,10 @@ import {
 
 import { MdBuild } from "react-icons/md";
 
-export default function ProfilePage() {
+export default function ProfilePage(props) {
   return (
     <div className="ProfilePage">
-      <NavBar />
+      <NavBar handleLogout={props.handleLogout} />
       <div className="ProfileDiv">
         <div className="ProfilePictureDiv">
           <Image

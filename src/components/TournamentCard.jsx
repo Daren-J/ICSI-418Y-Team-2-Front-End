@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../styles/TournamentCard.css";
 import { Button, Image, Progress, Stack } from "@chakra-ui/core";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 
 export default function TournamentCard({
   type,
@@ -39,7 +39,9 @@ export default function TournamentCard({
     setTourLocked(`${locked}`);
     setTourStartDate(`${df}/${mf}/${yf}`);
     setTourEndDate(`${dt}/${mt}/${yt}`);
+
     setTourID(`${tourid}`);
+
     setImageSrc(`${imgsrc}`);
     setTourDetail(tournamentDetail);
   }, []);
@@ -66,6 +68,7 @@ export default function TournamentCard({
           {TourStartDate} - {TourEndDate}
         </div>
         <div id="TournamentCardID">Tournament ID:</div>
+
         <div id="TCardIDValue">#{TourID}</div>
       </div>
       {TourDetail == true ? (
@@ -108,23 +111,28 @@ export default function TournamentCard({
             color="pink"
             size="lg"
             value={
-              (myTeamRP === null || myTeamRP === undefined
-                ? 0
-                : myTeamRP) / 400 * 100
+              ((myTeamRP === null || myTeamRP === undefined ? 0 : myTeamRP) /
+                400) *
+              100
             }
           />
         </div>
       ) : (
         <div className="ViewTournamentButtonDiv">
-          <Button
-            _focus={{ outline: "none", border: "none" }}
-            style={{ outline: "none", border: "none", cursor: "pointer" }}
-            variantColor="blue"
-            size="md"
-            onClick={() => {}}
+          <Link
+            to={{
+              pathname: `/TournamentDetails/${tourid}`,
+            }}
           >
-            View Tournament
-          </Button>
+            <Button
+              _focus={{ outline: "none", border: "none" }}
+              style={{ outline: "none", border: "none", cursor: "pointer" }}
+              variantColor="blue"
+              size="md"
+            >
+              View Tournament
+            </Button>
+          </Link>
         </div>
       )}
     </div>

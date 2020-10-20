@@ -3,13 +3,13 @@ import "../styles/NavBar.css";
 import { Link } from "react-router-dom";
 import { Avatar, Image } from "@chakra-ui/core";
 
-export default function NavBar() {
+export default function NavBar({ handleLogout }) {
   return (
     <div className="NavBar">
       <nav className="NavBar-nav">
         <ul className="NavBar-ul">
           <li className="NavBar-li">
-            <Link to={"/"}>
+            <Link to={"/HomePage"}>
               <Image
                 backgroundColor="white"
                 float="left"
@@ -31,13 +31,13 @@ export default function NavBar() {
             </Link>
           </li>
           <li className="NavBar-li">
-            <Link to={"/Profile"} className="h2tagNav">
-              Profile
+            <Link to={"/"} className="h2tagNav" onClick={handleLogout}>
+              Log out
             </Link>
           </li>
           <li className="NavBar-li">
-            <Link to={"/login"} className="h2tagNav">
-              Login/Register
+            <Link to={"/Profile"} className="h2tagNav">
+              Profile
             </Link>
           </li>
         </ul>

@@ -3,14 +3,14 @@ import "../styles/MyTournaments.css";
 import TournamentCard from "../components/TournamentCard";
 import NavBar from "../components/NavBar";
 
-export default function MyTournaments() {
+export default function MyTournaments(props) {
   // You would normally receive IDs from the Backend from the Database
   const [GlobalTournamentID, setGlobalTournamentID] = useState("651456125");
   const [FriendTournamentID, setFriendTournamentID] = useState("345234223");
 
   return (
     <div className="MyTournaments">
-      <NavBar />
+      <NavBar handleLogout={props.handleLogout} />
       <div className="innerMyTournaments">
         <div id="GlobalTour">
           <TournamentCard

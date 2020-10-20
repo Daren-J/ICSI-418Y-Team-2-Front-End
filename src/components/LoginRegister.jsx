@@ -11,15 +11,15 @@ import {
   Input,
   Button,
 } from "@chakra-ui/core";
+import { Link } from "react-router-dom";
 const axios = require("axios").default;
 
-export default function LoginRegister() {
+export default function LoginRegister(props) {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
-
-  
+  const [registerUsername, setRegisterUsername] = useState("");
 
   function loginAuthAttempt() {
     axios
@@ -28,6 +28,26 @@ export default function LoginRegister() {
           email: loginEmail,
           password: loginPassword,
         },
+      })
+      .then(function (response) {
+        if (response.status === 200) {
+          props.handleLogout(true);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
+  }
+
+  function registerAuthAttempt() {
+    axios
+      .post("/login/signup", {
+        username: registerUsername,
+        email: registerEmail,
+        password: registerPassword,
       })
       .then(function (response) {
         console.log(response);
@@ -147,22 +167,25 @@ export default function LoginRegister() {
                   >
                     Forgot Password
                   </Button>
-                  <Button
-                    rightIcon="arrow-forward"
-                    variantColor="green"
-                    variant="solid"
-                    w="40%"
-                    mt="30px"
-                    style={{
-                      border: "none",
-                      outline: "none",
-                      boxShadow: "none",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => loginAuthAttempt()}
-                  >
-                    Login
-                  </Button>
+
+                  <Link to={"/HomePage"}>
+                    <Button
+                      rightIcon="arrow-forward"
+                      variantColor="green"
+                      variant="solid"
+                      w="40%"
+                      mt="30px"
+                      style={{
+                        border: "none",
+                        outline: "none",
+                        boxShadow: "none",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => loginAuthAttempt()}
+                    >
+                      Login
+                    </Button>
+                  </Link>
                 </FormControl>
               </div>
             </TabPanel>
@@ -241,6 +264,7 @@ export default function LoginRegister() {
                       width="430px"
                       id="username"
                       placeholder="Username"
+                      onChange={(e) => setRegisterUsername(e.target.value)}
                     />
                   </div>
                   <div>
@@ -258,6 +282,7 @@ export default function LoginRegister() {
                       width="430px"
                       id="userEmail"
                       placeholder="Email Address"
+                      onChange={(e) => setRegisterEmail(e.target.value)}
                     />
                   </div>
                   <div
@@ -282,6 +307,7 @@ export default function LoginRegister() {
                       id="userPass"
                       placeholder="Password"
                       type="password"
+                      onChange={(e) => setRegisterPassword(e.target.value)}
                     />
                   </div>
                   <div
@@ -320,6 +346,7 @@ export default function LoginRegister() {
                       boxShadow: "none",
                       cursor: "pointer",
                     }}
+                    onClick={() => registerAuthAttempt()}
                   >
                     Register
                   </Button>

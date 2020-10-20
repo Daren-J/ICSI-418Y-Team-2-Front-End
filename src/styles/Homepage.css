@@ -10,20 +10,17 @@ body {
 .LeagueNews {
   float: left;
   margin-top: 3%;
-  margin-left: 104px;
-  box-shadow: 0 5px 25px 10px black;
+  margin-left: 70px;
 }
 
 .Leaderboard {
   float: left;
   margin-top: 3%;
   margin-left: 104px;
-  box-shadow: 0 5px 25px 10px black;
 }
 
 .ChatBox {
   float: left;
   margin-top: 3%;
   margin-left: 104px;
-  box-shadow: 0 5px 25px 10px black;
 }

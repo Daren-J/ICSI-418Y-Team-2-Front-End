@@ -2,10 +2,10 @@ import React from "react";
 import LoginRegister from "../components/LoginRegister";
 import "../styles/Authentication.css";
 
-export default function Authentication() {
+export default function Authentication(props) {
   return (
     <div className="Authentication">
-      <LoginRegister  />
+      <LoginRegister handleLogout={props.handleLogout} />
     </div>
   );
 }
