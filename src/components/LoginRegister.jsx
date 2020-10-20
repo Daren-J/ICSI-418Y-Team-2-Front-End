@@ -10,6 +10,8 @@ import {
   FormLabel,
   Input,
   Button,
+  Tooltip,
+  useToast,
 } from "@chakra-ui/core";
 import { Link } from "react-router-dom";
 const axios = require("axios").default;
@@ -20,6 +22,8 @@ export default function LoginRegister(props) {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [registerUsername, setRegisterUsername] = useState("");
+  const [registerFirstName, setRegisterFirstName] = useState("");
+  const [registerLastName, setRegisterLastName] = useState("");
 
   function loginAuthAttempt() {
     axios
@@ -30,6 +34,7 @@ export default function LoginRegister(props) {
         },
       })
       .then(function (response) {
+        console.log(response);
         if (response.status === 200) {
           props.handleLogout(true);
         }
@@ -37,9 +42,7 @@ export default function LoginRegister(props) {
       .catch(function (error) {
         console.log(error);
       })
-      .then(function () {
-        // always executed
-      });
+      .then(function () {});
   }
 
   function registerAuthAttempt() {
@@ -48,6 +51,8 @@ export default function LoginRegister(props) {
         username: registerUsername,
         email: registerEmail,
         password: registerPassword,
+        firstName: registerFirstName,
+        lastName: registerLastName,
       })
       .then(function (response) {
         console.log(response);
@@ -55,11 +60,9 @@ export default function LoginRegister(props) {
       .catch(function (error) {
         console.log(error);
       })
-      .then(function () {
-        // always executed
-      });
+      .then(function () {});
   }
-
+  const toast = useToast();
   return (
     <div className="LoginRegister">
       <h2 style={{ margin: 0, paddingBottom: "10px", fontSize: "30px" }}>
@@ -152,39 +155,46 @@ export default function LoginRegister(props) {
                   </div>
                 </FormControl>
                 <FormControl>
-                  <Button
-                    variantColor="red"
-                    variant="solid"
-                    w="40%"
-                    mt="30px"
-                    mr="5%"
-                    style={{
-                      border: "none",
-                      outline: "none",
-                      boxShadow: "none",
-                      cursor: "pointer",
-                    }}
+                  <Tooltip
+                    label="Forgot Password"
+                    placement="bottom"
+                    bg="red.500"
                   >
-                    Forgot Password
-                  </Button>
-
-                  <Link to={"/HomePage"}>
                     <Button
-                      rightIcon="arrow-forward"
-                      variantColor="green"
+                      variantColor="red"
                       variant="solid"
                       w="40%"
                       mt="30px"
+                      mr="5%"
                       style={{
                         border: "none",
                         outline: "none",
                         boxShadow: "none",
                         cursor: "pointer",
                       }}
-                      onClick={() => loginAuthAttempt()}
                     >
-                      Login
+                      Forgot Password
                     </Button>
+                  </Tooltip>
+                  <Link to={"/HomePage"}>
+                    <Tooltip label="Log In" placement="bottom" bg="green.500">
+                      <Button
+                        rightIcon="arrow-forward"
+                        variantColor="green"
+                        variant="solid"
+                        w="40%"
+                        mt="30px"
+                        style={{
+                          border: "none",
+                          outline: "none",
+                          boxShadow: "none",
+                          cursor: "pointer",
+                        }}
+                        onClick={() => loginAuthAttempt()}
+                      >
+                        Log In
+                      </Button>
+                    </Tooltip>
                   </Link>
                 </FormControl>
               </div>
@@ -224,6 +234,7 @@ export default function LoginRegister(props) {
                       width="180px"
                       id="fname"
                       placeholder="First Name"
+                      onChange={(e) => setRegisterFirstName(e.target.value)}
                     />
                   </div>
                   <div
@@ -247,6 +258,7 @@ export default function LoginRegister(props) {
                       width="180px"
                       id="lname"
                       placeholder="Last Name"
+                      onChange={(e) => setRegisterLastName(e.target.value)}
                     />
                   </div>
                   <div>
@@ -334,22 +346,38 @@ export default function LoginRegister(props) {
                       type="password"
                     />
                   </div>
-                  <Button
-                    rightIcon="check"
-                    variantColor="green"
-                    variant="solid"
-                    w="40%"
-                    mt="20px"
-                    style={{
-                      border: "none",
-                      outline: "none",
-                      boxShadow: "none",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => registerAuthAttempt()}
+
+                  <Tooltip
+                    label="Create Account"
+                    backgroundColor="green.500"
+                    placement="bottom"
                   >
-                    Register
-                  </Button>
+                    <Button
+                      rightIcon="check"
+                      variantColor="green"
+                      variant="solid"
+                      w="40%"
+                      mt="20px"
+                      style={{
+                        border: "none",
+                        outline: "none",
+                        boxShadow: "none",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => {
+                        toast({
+                          title: "Account created.",
+                          description: "We've created your account for you.",
+                          status: "success",
+                          duration: 9000,
+                          isClosable: true,
+                        });
+                        registerAuthAttempt();
+                      }}
+                    >
+                      Register
+                    </Button>
+                  </Tooltip>
                 </FormControl>
               </div>
             </TabPanel>
