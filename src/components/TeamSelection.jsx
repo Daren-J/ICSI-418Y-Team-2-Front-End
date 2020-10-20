@@ -7,16 +7,21 @@ import {
   TabPanels,
   Tabs,
   useToast,
+  Tooltip,
+  Button,
+  Icon,
 } from "@chakra-ui/core";
 import PlayerCard from "./PlayerCard";
 import { playersAvailable } from "../services/playersAvailable";
 
-export default function TeamSelection() {
-  const [playersSelectedCount, setPlayersSelectedCount] = useState();
+export default function TeamSelection({ setMyTeamRP }) {
   const [playerRankingPoints, setPlayerRankingPoints] = useState(0);
   const [rosterPlayersCount, setRosterPlayersCount] = useState();
+  const [activePlayersCount, setActivePlayersCount] = useState();
   const [rosterPlayers, setRosterPlayers] = useState([]);
   const [activePlayers, setActivePlayers] = useState([]);
+  const [canLockIn, setCanLockIn] = useState(false);
+  const [isLockedIn, setIsLockedIn] = useState(false);
   const [locked, setLocked] = useState(true);
 
   const toast = useToast();
@@ -42,11 +47,17 @@ export default function TeamSelection() {
                 console.log(index);
                 rosterPlayers.splice(index, 1);
               }
-              setPlayersSelectedCount(playersSelectedCount + value.count);
+              setRosterPlayersCount(rosterPlayersCount + value.count);
               if (rosterPlayers.length === 10) {
                 setLocked(false);
               } else {
                 setLocked(true);
+                setCanLockIn(false);
+                setActivePlayersCount(0);
+                setIsLockedIn(false);
+                setPlayerRankingPoints(0);
+                setMyTeamRP(0);
+                activePlayers.splice(0, activePlayers.length);
               }
             }}
             name={playersAvailable[i].name}
@@ -69,9 +80,22 @@ export default function TeamSelection() {
         players.push(
           <PlayerCard
             onChange={(value) => {
-              activePlayers.push(value.id);
-              setRosterPlayersCount(playersSelectedCount + 1);
+              if (value.count > 0) {
+                activePlayers.push(value.id);
+              } else {
+                const index = activePlayers.indexOf(value.id);
+                console.log(index);
+                activePlayers.splice(index, 1);
+              }
+              setActivePlayersCount(activePlayersCount + value.count);
+              setMyTeamRP(playerRankingPoints + value.rp);
               setPlayerRankingPoints(playerRankingPoints + value.rp);
+
+              if (activePlayers.length === 5) {
+                setCanLockIn(true);
+              } else {
+                setCanLockIn(false);
+              }
             }}
             name={rosterData[i].name}
             rankingPoints={rosterData[i].rankingPoints}
@@ -120,11 +144,12 @@ export default function TeamSelection() {
                   boxShadow: "none",
                   outline: "none",
                   borderRadius: 0,
+                  borderRight: "1px solid white",
                 }}
               >
                 Roster Selection
               </Tab>
-              {locked ? null : (
+              {locked || isLockedIn ? null : (
                 <Tab
                   mb="0"
                   bg="rgb(58, 29, 153)"
@@ -134,7 +159,6 @@ export default function TeamSelection() {
                     boxShadow: "none",
                     outline: "none",
                     borderRadius: 0,
-                    borderLeft: "1px solid white",
                     borderRight: "1px solid white",
                   }}
                 >
@@ -147,11 +171,47 @@ export default function TeamSelection() {
               <TabPanel>
                 <div className="SecondaryTabsTeamStats"></div>
               </TabPanel>
-              <TabPanel>
-                <div className="SecondaryTabsRosterSelection">
-                  {generatePlayerDivs()}
-                </div>
-              </TabPanel>
+              {isLockedIn ? (
+                <TabPanel>
+                  <div className="ifLockedInButton">
+                    <Tooltip
+                      label="Cancel Changes"
+                      placement="bottom"
+                      bg="red.600"
+                    >
+                      <Button
+                        variantColor="red"
+                        onClick={() => {
+                          toast({
+                            title: "Active Players Un-Locked!",
+                            description:
+                              "Your Active players have been Un-Locked!",
+                            status: "error",
+                            duration: 2000,
+                            isClosable: true,
+                          });
+                          setIsLockedIn(false);
+                        }}
+                      >
+                        Un-Lock{" "}
+                        <Icon
+                          marginLeft="0px"
+                          style={{ float: "left", marginLeft: "10px" }}
+                          name="not-allowed"
+                          size="28px"
+                          color="white"
+                        />
+                      </Button>
+                    </Tooltip>
+                  </div>
+                </TabPanel>
+              ) : (
+                <TabPanel>
+                  <div className="SecondaryTabsRosterSelection">
+                    {generatePlayerDivs()}
+                  </div>
+                </TabPanel>
+              )}
               {locked ? null : (
                 <TabPanel>
                   <div className="SecondaryTabsActivePlayers">
@@ -162,8 +222,65 @@ export default function TeamSelection() {
             </TabPanels>
           </Tabs>
         </div>
-        <div className="ActionsTeamSelection"></div>
+
+        {canLockIn ? (
+          <div
+            className="ActionsTeamSelection"
+            style={{ justifyItems: "center" }}
+          >
+            <Tooltip label="Save Changes" placement="bottom" bg="blue.500">
+              <Button
+                variantColor="blue"
+                onClick={() => {
+                  toast({
+                    title: "Active Players Saved!",
+                    description: "Your Active players have been locked!",
+                    status: "success",
+                    duration: 2000,
+                    isClosable: true,
+                  });
+                  setIsLockedIn(true);
+                }}
+              >
+                Lock In{" "}
+                <Icon
+                  marginLeft="0px"
+                  style={{ float: "left", marginLeft: "10px" }}
+                  name="check"
+                  size="28px"
+                  color="green.300"
+                />
+              </Button>
+            </Tooltip>
+          </div>
+        ) : null}
       </div>
     </div>
   );
 }
+
+/*
+<Tooltip label="Cancel Changes" placement="bottom" bg="red.600">
+              <Button
+                variantColor="red"
+                onClick={() =>
+                  toast({
+                    title: "Active Players Un-Locked!",
+                    description: "Your Active players have been Un-Locked!",
+                    status: "error",
+                    duration: 2000,
+                    isClosable: true,
+                  })
+                }
+              >
+                Un-Lock{" "}
+                <Icon
+                  marginLeft="0px"
+                  style={{ float: "left", marginLeft: "10px" }}
+                  name="not-allowed"
+                  size="28px"
+                  color="white"
+                />
+              </Button>
+            </Tooltip>
+            */

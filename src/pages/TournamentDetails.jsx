@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import NavBar from "../components/NavBar";
 import "../styles/TournamentDetails.css";
 import { Tab, TabList, TabPanels, Tabs, TabPanel } from "@chakra-ui/core";
@@ -6,8 +6,11 @@ import TournamentCard from "../components/TournamentCard";
 import Chat from "../components/Chat";
 import Leaderboard from "../components/Leaderboard";
 import TeamSelection from "../components/TeamSelection";
+import MatchHistory from "../components/MatchHistory";
 
 export default function TournamentDetails(props) {
+  const [myTeamRP, setMyTeamRP] = useState();
+
   return (
     <div className="TournamentDetails">
       <NavBar />
@@ -25,6 +28,7 @@ export default function TournamentDetails(props) {
           tourid="651456125"
           imgsrc="https://i.pinimg.com/originals/0d/62/c5/0d62c5a2849ad4e0722d01deba9e363a.jpg"
           tournamentDetail={true}
+          myTeamRP={myTeamRP}
         />
       </div>
 
@@ -75,11 +79,14 @@ export default function TournamentDetails(props) {
 
             <TabPanels color="black">
               <TabPanel>
-                <div id="TourDetailsPanel1"><TeamSelection /></div>
+                <div id="TourDetailsPanel1">
+                  <TeamSelection setMyTeamRP={(val) => setMyTeamRP(val)} />
+                </div>
               </TabPanel>
               <TabPanel>
                 <div id="TourDetailsPanel2">
-                  {/* Match History Component, Upcoming Matches Component */}
+                  <MatchHistory type="Match History" bgColor="" />
+                  <MatchHistory type="Upcoming Matches" bgColor="rgb(180, 22, 62)" />
                 </div>
               </TabPanel>
               <TabPanel>

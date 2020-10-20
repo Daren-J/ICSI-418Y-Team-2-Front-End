@@ -40,6 +40,7 @@
   height: 740px;
   background-color: rgba(34, 168, 168, 0.671);
   margin-top: 1px;
+  display: flex;
 }
 
 #TourDetailsPanel3 {
@@ -64,4 +65,9 @@
 
 .innerLeaderboard {
   background-color: rgba(180, 22, 62, 0.561);
+}
+
+.MatchHistory {
+  margin-top: 50px;
+  margin: auto;
 }

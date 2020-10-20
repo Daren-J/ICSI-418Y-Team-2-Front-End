@@ -11,10 +11,34 @@ import {
   Input,
   Button,
 } from "@chakra-ui/core";
+const axios = require("axios").default;
 
 export default function LoginRegister() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+
+  
+
+  function loginAuthAttempt() {
+    axios
+      .post("/login/signin", null, {
+        params: {
+          email: loginEmail,
+          password: loginPassword,
+        },
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
+  }
 
   return (
     <div className="LoginRegister">
@@ -83,7 +107,7 @@ export default function LoginRegister() {
                       width="430px"
                       id="loginUserEmail"
                       placeholder="Email Address"
-                      onChange={(e) => setEmail(e.target.value)}
+                      onChange={(e) => setLoginEmail(e.target.value)}
                     />
                   </div>
                   <div>
@@ -103,7 +127,7 @@ export default function LoginRegister() {
                       id="loginUserPassword"
                       placeholder="Password"
                       type="password"
-                      onChange={(e) => setPassword(e.target.value)}
+                      onChange={(e) => setLoginPassword(e.target.value)}
                     />
                   </div>
                 </FormControl>
@@ -135,6 +159,7 @@ export default function LoginRegister() {
                       boxShadow: "none",
                       cursor: "pointer",
                     }}
+                    onClick={() => loginAuthAttempt()}
                   >
                     Login
                   </Button>

@@ -16,6 +16,7 @@ export default function TournamentCard({
   tourid,
   imgsrc,
   tournamentDetail,
+  myTeamRP,
 }) {
   const [TourType, setTourType] = useState("");
   const [TourActive, setTourActive] = useState("");
@@ -83,15 +84,6 @@ export default function TournamentCard({
             size="lg"
             value={(360 / 400) * 100}
           />
-          <div id="TeamEarnedPoints">My Team's RP: {150}/400</div>
-          <Progress
-            borderRadius="15px"
-            hasStripe
-            isAnimated
-            color="pink"
-            size="lg"
-            value={(150 / 400) * 100}
-          />
 
           <div id="TourMatchesPlayed">
             Matches Played: {16 * 2 - 12}/{16 * 2}
@@ -103,6 +95,23 @@ export default function TournamentCard({
             color="yellow"
             size="lg"
             value={((16 * 2 - 12) / (16 * 2)) * 100}
+          />
+
+          <div id="TeamEarnedPoints">
+            My Team's RP:{" "}
+            {myTeamRP === null || myTeamRP === undefined ? 0 : myTeamRP}/400
+          </div>
+          <Progress
+            borderRadius="15px"
+            hasStripe
+            isAnimated
+            color="pink"
+            size="lg"
+            value={
+              (myTeamRP === null || myTeamRP === undefined
+                ? 0
+                : myTeamRP) / 400 * 100
+            }
           />
         </div>
       ) : (

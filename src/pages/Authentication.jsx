@@ -5,7 +5,7 @@ import "../styles/Authentication.css";
 export default function Authentication() {
   return (
     <div className="Authentication">
-      <LoginRegister />
+      <LoginRegister  />
     </div>
   );
 }

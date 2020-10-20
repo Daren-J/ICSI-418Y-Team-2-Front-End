@@ -26,18 +26,8 @@ export default function NavBar() {
             </Link>
           </li>
           <li className="NavBar-li">
-            <Link to={"/MyTeam"} className="h2tagNav">
-              My Teams
-            </Link>
-          </li>
-          <li className="NavBar-li">
             <Link to={"/MyTournaments"} className="h2tagNav">
               My Tournaments
-            </Link>
-          </li>
-          <li className="NavBar-li">
-            <Link to={"/ContactUs"} className="h2tagNav">
-              Contact Us
             </Link>
           </li>
           <li className="NavBar-li">

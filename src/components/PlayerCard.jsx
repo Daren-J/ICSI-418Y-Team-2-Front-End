@@ -23,7 +23,6 @@ export default function PlayerCard({
   const [averageAssists, setAverageAssists] = useState(0);
   const [averageSteals, setAverageSteals] = useState(0);
   const [averageFreeThrows, setFreeThrows] = useState(0);
-  const [theType, setTheType] = useState();
 
   useEffect(() => {
     setAverage2Pointers(pts2);
