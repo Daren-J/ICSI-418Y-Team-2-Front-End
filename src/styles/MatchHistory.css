@@ -1,16 +1,17 @@
 .MatchHistory {
-  background-color: white;
-  width: 550px;
-  height: 600px;
+  background-color: #16697a;
   border: 1px solid black;
   border-radius: 25px;
   padding-bottom: 35px;
+  margin: auto;
+  margin-top: 5%;
 }
 
 #matchHistoryTitle {
-  color: black;
+  color: #ede7e3;
   margin: 0;
-  padding: 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
   text-align: center;
   border-bottom: 1px solid black;
 }
@@ -31,9 +32,10 @@
 .MatchHistoryTab {
   width: 100%;
   min-height: 100px;
-  background-color: rgb(23, 24, 92);
+  color: #16697a;
+  background-color:#82c0cc;
   margin-bottom: 0;
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid#edddd4;
   margin: auto;
 }
 
@@ -42,15 +44,17 @@
 }
 
 #MatchHistoryTabTitle {
-  color: white;
   margin-top: 0;
   margin-bottom: 2%;
   text-align: center;
 }
 
 #MatchHistoryTabDesc {
-  color: white;
   text-align: center;
   margin-top: 0;
   margin-bottom: 0;
+}
+
+h2 {
+  padding-top: 10px;
 }

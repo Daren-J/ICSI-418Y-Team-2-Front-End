@@ -4,23 +4,42 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  color: white;
+  color: #ede7e3;
+}
+
+#home-components {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin: auto;
+  margin-top: 5%;
+}
+
+/* Keeps elements relatively close together on larger screens */
+@media(min-width: 2600px) {
+  #home-components {
+    width: 70%;
+  }
+}
+
+.home-element {
+  margin: none;
+  margin: auto;
+  flex-shrink: 0;
 }
 
 .LeagueNews {
-  float: left;
-  margin-top: 3%;
-  margin-left: 70px;
+  margin: auto;
+  box-shadow: 0 5px 5px 5px #464646;
 }
 
 .Leaderboard {
-  float: left;
-  margin-top: 3%;
-  margin-left: 104px;
+  margin: auto;
+  box-shadow: 0 5px 5px 5px #464646;
 }
 
-.ChatBox {
-  float: left;
-  margin-top: 3%;
-  margin-left: 104px;
+#home-chat {
+  margin: auto;
+  border-radius: 25px;
+  box-shadow: 0 5px 5px 5px #464646;
 }
