@@ -144,32 +144,34 @@ export default function TeamSelection({ setMyTeamRP }) {
       <div className="NavTeamSelection">
         <div className="TabsTeamSelection">
           <Tabs isFitted variant="enclosed">
-            <TabList borderTop="1px solid white;" h="50px">
+            <TabList borderTop="1px solid #ede7e3;" h="50px">
               <Tab
                 mb="0"
-                bg="rgb(114, 30, 0)"
+                bg="#82c0cc"
+                _selected= {{ color: 'black', bg: '#ffa62b'}}
                 style={{
-                  color: "white",
+                  color: "black",
                   border: "none",
                   boxShadow: "none",
                   outline: "none",
                   borderRadius: 0,
-                  borderLeft: "1px solid white",
-                  borderRight: "1px solid white",
+                  borderLeft: "1px solid #ede7e3",
+                  borderRight: "1px solid #ede7e3",
                 }}
               >
                 Team Stats
               </Tab>
               <Tab
                 mb="0"
-                bg="rgb(34, 168, 168)"
+                bg="#82c0cc"
+                _selected= {{ color: 'black', bg: '#ffa62b'}}
                 style={{
-                  color: "white",
+                  color: "black",
                   border: "none",
                   boxShadow: "none",
                   outline: "none",
                   borderRadius: 0,
-                  borderRight: "1px solid white",
+                  borderRight: "1px solid #ede7e3",
                 }}
               >
                 Roster Selection
@@ -179,12 +181,12 @@ export default function TeamSelection({ setMyTeamRP }) {
                   mb="0"
                   bg="rgb(58, 29, 153)"
                   style={{
-                    color: "white",
+                    color: "#ede7e3",
                     border: "none",
                     boxShadow: "none",
                     outline: "none",
                     borderRadius: 0,
-                    borderRight: "1px solid white",
+                    borderRight: "1px solid #ede7e3",
                   }}
                 >
                   Active Players
@@ -192,7 +194,7 @@ export default function TeamSelection({ setMyTeamRP }) {
               )}
             </TabList>
 
-            <TabPanels borderTop="1px solid white;" color="white">
+            <TabPanels borderTop="1px solid #ede7e3;" color="#ede7e3">
               <TabPanel>
                 {isLockedIn ? (
                   <div className="SecondaryTabsTeamStats">
@@ -251,7 +253,7 @@ export default function TeamSelection({ setMyTeamRP }) {
                             style={{ float: "left", marginLeft: "10px" }}
                             name="not-allowed"
                             size="28px"
-                            color="white"
+                            color="#ede7e3"
                           />
                         </Button>
                       </Tooltip>

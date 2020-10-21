@@ -6,10 +6,12 @@
 
 #GlobalTour {
   margin-left: auto;
-  box-shadow: 0 5px 25px 10px black;
+  border-radius: 15px;
+  box-shadow: 0 2px 15px 5px black;
 }
 
 #FriendsTour {
   margin: auto;
-  box-shadow: 0 5px 25px 10px black;
+  border-radius: 15px;
+  box-shadow: 0 2px 15px 5px black;
 }

@@ -4,11 +4,11 @@
 .ProfileDiv {
   width: 650px;
   height: 500px;
-  background-color: rgb(43, 57, 139);
+  background-color:#16697a;
   border-radius: 30px;
   margin: auto;
   margin-top: 150px;
-  border: 5px solid red;
+  border: 5px solid #242423;
 }
 
 .ProfilePictureDiv {
@@ -18,9 +18,6 @@
   margin: auto;
   margin-top: 25px;
   text-align: center;
-}
-
-.InputFormProfile {
 }
 
 .UsernameProfile {

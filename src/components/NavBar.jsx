@@ -20,7 +20,7 @@ export default function NavBar({ handleLogout }) {
                 size="55px"
                 src="https://media.discordapp.net/attachments/747875449937461333/752598704988487696/penguin_gang_logo.png"
                 alt="NBA PENGUIN"
-                border="1px solid red"
+                border="1px solid #489fb5"
               />
               <p className="h2tagNavLogo">NBA Penguin</p>
             </Link>

@@ -1,19 +1,22 @@
 .ChatBox {
   width: 450px;
-  height: 650px;
-  background-color: rgba(24, 25, 70, 0.808);
+  height: 660px;
+  background-color: #16697a;
+  border-radius: 25px;
   border: 1px solid black;
 }
 
 #chatName {
   margin: 0;
   padding: 0;
-  color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: #ede7e3;
   text-align: center;
 }
 
 .InnerChatDiv {
-  background-color: rgba(255, 255, 255, 0.383);
+  background-color:#ede7e3;
   border: 1px solid black;
   width: 400px;
   height: 530px;
@@ -23,7 +26,7 @@
 
 #formControlInput {
   width: 100%;
-  background-color: rebeccapurple;
+  background-color:#489fb5;
   margin-top: 15px;
   margin-left: 25px;
 }

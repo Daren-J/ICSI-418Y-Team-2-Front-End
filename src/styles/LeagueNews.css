@@ -1,5 +1,5 @@
 .LeagueNews {
-  background-color: white;
+  background-color: #16697a;
   width: 550px;
   height: 600px;
   border: 1px solid black;
@@ -8,9 +8,10 @@
 }
 
 #announcementsTitle {
-  color: black;
+  color: #ede7e3;
   margin: 0;
-  padding: 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
   text-align: center;
   border-bottom: 1px solid black;
 }
@@ -36,9 +37,11 @@
 .AnnouncementTab {
   width: 100%;
   min-height: 150px;
-  background-color: rgb(23, 24, 92);
+  background-color:#82c0cc;
   margin-bottom: 0;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid #edddd4;
+  padding-top: 5px;
+  padding-bottom: 5px;
   margin: auto;
 }
 
@@ -47,14 +50,14 @@
 }
 
 #announcementTabTitle {
-  color: white;
+  color: #103451;
   margin-top: 0;
   margin-bottom: 2%;
   text-align: center;
 }
 
 #announcementTabDesc {
-  color: white;
+  color: #103451;
   text-align: center;
   margin-top: 0;
   margin-bottom: 0;

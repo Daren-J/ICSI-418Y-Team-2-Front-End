@@ -14,46 +14,49 @@ export default function TournamentDetails(props) {
   return (
     <div className="TournamentDetails">
       <NavBar handleLogout={props.handleLogout} />
-      <div className="TourCardDetailsPageDiv">
-        <TournamentCard
-          type="Global"
-          available="Yes"
-          locked="No"
-          df="10"
-          mf="15"
-          yf="2020"
-          dt="10"
-          mt="15"
-          yt="2020"
-          tourid={props.tourIdProp}
-          imgsrc="https://i.pinimg.com/originals/0d/62/c5/0d62c5a2849ad4e0722d01deba9e363a.jpg"
-          tournamentDetail={true}
-          myTeamRP={myTeamRP}
-        />
-      </div>
+      <div id="tcd-wrapper">
+        <div className="TourCardDetailsPageDiv">
+          <TournamentCard
+            type="Global"
+            available="Yes"
+            locked="No"
+            df="10"
+            mf="15"
+            yf="2020"
+            dt="10"
+            mt="15"
+            yt="2020"
+            tourid={props.tourIdProp}
+            imgsrc="https://i.pinimg.com/originals/0d/62/c5/0d62c5a2849ad4e0722d01deba9e363a.jpg"
+            tournamentDetail={true}
+            myTeamRP={myTeamRP}
+          />
+        </div>
 
-      <div className="innerTournamentDetails">
+        <div className="innerTournamentDetails">
         <div className="NavBarTabsTournamentDetails">
           <Tabs isFitted variant="enclosed">
             <TabList h="70px">
               <Tab
                 mt="-1px"
-                bg="rgb(114, 15, 15, 0.671)"
+                bg="#82c0cc"
+                _selected= {{ color: 'black', bg: '#ffa62b'}}
                 style={{
-                  color: "white",
+                  color: "black",
                   border: "none",
                   boxShadow: "none",
                   outline: "none",
-                  borderRadius: 0,
+                  borderRadius: "10px 0 0 0",
                 }}
               >
                 My Team
               </Tab>
               <Tab
                 mt="-1px"
-                bg="rgba(34, 168, 168, 0.671)"
+                bg="#82c0cc"
+                _selected= {{ color: 'black', bg: '#ffa62b'}}
                 style={{
-                  color: "white",
+                  color: "black",
                   border: "none",
                   boxShadow: "none",
                   outline: "none",
@@ -64,13 +67,14 @@ export default function TournamentDetails(props) {
               </Tab>
               <Tab
                 mt="-1px"
-                bg="rgb(58, 29, 153, 0.671)"
+                bg="#82c0cc"
+                _selected= {{ color: 'black', bg: '#ffa62b'}}
                 style={{
-                  color: "white",
+                  color: "black",
                   border: "none",
                   boxShadow: "none",
                   outline: "none",
-                  borderRadius: 0,
+                  borderRadius: "0 10px 0 0",
                 }}
               >
                 Chat and Leaderboard
@@ -88,19 +92,24 @@ export default function TournamentDetails(props) {
                   <MatchHistory type="Match History" bgColor="" />
                   <MatchHistory
                     type="Upcoming Matches"
-                    bgColor="rgb(180, 22, 62)"
+                    bgColor="#ffa62b"
                   />
                 </div>
               </TabPanel>
               <TabPanel>
                 <div id="TourDetailsPanel3">
-                  <Chat />
-                  <Leaderboard />
+                    <div id="tour-chat">
+                      <Chat />
+                    </div>
+                    <div id="tour-lb">
+                      <Leaderboard />
+                    </div>
                 </div>
               </TabPanel>
             </TabPanels>
           </Tabs>
         </div>
+      </div>
       </div>
     </div>
   );

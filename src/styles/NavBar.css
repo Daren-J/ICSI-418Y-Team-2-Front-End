@@ -1,11 +1,8 @@
 .NavBar {
-  max-width: 1918px;
+  width: 100%;
   height: 65px;
-  background-color: rgb(10, 53, 66);
-  border-bottom: 1px solid white;
-  border-left: 1px solid white;
-  border-right: 1px solid white;
-  box-shadow: 0 13px 13px -1px rgba(131, 49, 49, 0.555);
+  background-color:#16697a;
+  box-shadow: 0 5px 5px -1px #464646;
 }
 
 .NavBar-nav {
@@ -16,7 +13,7 @@
   font-family: Arial, Helvetica, sans-serif;
   float: left;
   display: block;
-  color: #f2f2f2;
+  color: #ede7e3;
   text-align: center;
   text-decoration: none;
   font-size: 24px;
@@ -24,7 +21,7 @@
 }
 
 .h2tagNavLogo:hover {
-  color: rgb(224, 140, 31);
+  color: #ffa62b;
   cursor: pointer;
 }
 
@@ -56,7 +53,7 @@
   font-family: Arial, Helvetica, sans-serif;
   float: left;
   display: block;
-  color: #f2f2f2;
+  color: #ede7e3;
   text-align: center;
   text-decoration: none;
   font-size: 24px;
@@ -64,6 +61,6 @@
 }
 
 .h2tagNav:hover {
-  color: rgb(224, 140, 31);
+  color:#ffa62b;
   cursor: pointer;
 }

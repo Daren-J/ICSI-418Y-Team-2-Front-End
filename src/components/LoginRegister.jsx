@@ -73,7 +73,7 @@ export default function LoginRegister(props) {
           <TabList height="50px">
             <Tab
               mt="-1px"
-              bg="rgb(58, 29, 153, 0.8)"
+              bg="#16697a"
               style={{
                 color: "white",
                 border: "none",
@@ -86,7 +86,7 @@ export default function LoginRegister(props) {
             </Tab>
             <Tab
               mt="-1px"
-              bg="rgb(60, 96, 214, 0.8)"
+              bg="#103451"
               style={{
                 color: "white",
                 border: "none",
@@ -99,17 +99,17 @@ export default function LoginRegister(props) {
             </Tab>
           </TabList>
 
+
           <TabPanels>
             <TabPanel
               height="450px"
-              bg="rgb(58, 29, 153, 0.8)"
+              bg="#16697a"
               style={{
-                color: "white",
+                bg: "#ede7e3",
                 border: "none",
                 boxShadow: "none",
                 outline: "none",
                 borderRadius: "0 0 25px 25px",
-                borderTop: "2px solid white",
               }}
             >
               <div className="loginTab">
@@ -117,6 +117,7 @@ export default function LoginRegister(props) {
                   <div>
                     <FormLabel
                       isRequired
+                      color="white"
                       mt="70px"
                       pl="0"
                       pr="0"
@@ -136,6 +137,7 @@ export default function LoginRegister(props) {
                   <div>
                     <FormLabel
                       isRequired
+                      color="white"
                       mt="20px"
                       pl="0"
                       pr="0"
@@ -155,60 +157,53 @@ export default function LoginRegister(props) {
                   </div>
                 </FormControl>
                 <FormControl>
-                  <Tooltip
-                    label="Forgot Password"
-                    placement="bottom"
-                    bg="red.500"
+                  <Button
+                    _hover=""
+                    bg="#489fb5"
+                    color="white"
+                    variant="solid"
+                    w="40%"
+                    mt="30px"
+                    mr="5%"
+                    style={{
+                      border: "none",
+                      outline: "none",
+                      boxShadow: "none",
+                      cursor: "pointer",
+                    }}
                   >
+                    Forgot Password
+                  </Button>
+                  <Link to={"/HomePage"}>
                     <Button
-                      variantColor="red"
+                      rightIcon="arrow-forward"
+                      variantColor="green"
                       variant="solid"
                       w="40%"
                       mt="30px"
-                      mr="5%"
                       style={{
                         border: "none",
                         outline: "none",
                         boxShadow: "none",
                         cursor: "pointer",
                       }}
+                      onClick={() => loginAuthAttempt()}
                     >
-                      Forgot Password
+                      Log In
                     </Button>
-                  </Tooltip>
-                  <Link to={"/HomePage"}>
-                    <Tooltip label="Log In" placement="bottom" bg="green.500">
-                      <Button
-                        rightIcon="arrow-forward"
-                        variantColor="green"
-                        variant="solid"
-                        w="40%"
-                        mt="30px"
-                        style={{
-                          border: "none",
-                          outline: "none",
-                          boxShadow: "none",
-                          cursor: "pointer",
-                        }}
-                        onClick={() => loginAuthAttempt()}
-                      >
-                        Log In
-                      </Button>
-                    </Tooltip>
                   </Link>
                 </FormControl>
               </div>
             </TabPanel>
             <TabPanel
               height="450px"
-              bg="rgb(60, 96, 214, 0.8)"
+              bg="#103451"
               style={{
                 color: "white",
                 border: "none",
                 boxShadow: "none",
                 outline: "none",
                 borderRadius: "0 0 25px 25px",
-                borderTop: "2px solid white",
               }}
             >
               <div className="registerTab">
@@ -357,7 +352,7 @@ export default function LoginRegister(props) {
                       variantColor="green"
                       variant="solid"
                       w="40%"
-                      mt="20px"
+                      mt="25px"
                       style={{
                         border: "none",
                         outline: "none",

@@ -9,9 +9,17 @@ export default function Homepage(props) {
   return (
     <div className="Homepage">
       <NavBar handleLogout={props.handleLogout} />
-      <LeagueNews />
-      <Leaderboard />
-      <Chat type="Global" />
+      <div id="home-components">
+        <div className="home-element">
+          <LeagueNews />
+        </div>
+        <div className="home-element" id="home-lb">
+          <Leaderboard />
+        </div>
+        <div className="home-element" id="home-chat">
+          <Chat type="Global" />
+        </div>
+      </div>
     </div>
   );
 }
