@@ -75,14 +75,14 @@ export default function PlayerCard({
           {averageSteals} Steals
         </div>
 
-        <div style={{ fontSize: "20px", marginBottom: "5px", color: "red" }}>
+        <div style={{ fontSize: "20px", marginBottom: "5px", color: "#82c0cc" }}>
           {rankingPoints} Ranking Points
         </div>
         <Progress
           borderRadius="15px"
           hasStripe
           isAnimated
-          color="orange"
+          color="yellow"
           size="lg"
           m="auto"
           w="80%"
@@ -94,7 +94,7 @@ export default function PlayerCard({
           <Checkbox
             id={`player${id}`}
             size="lg"
-            variantColor="red"
+            variantColor="yellow"
             defaultIsunChecked
             onChange={(event) => {
               setIsChecked(!isChecked);

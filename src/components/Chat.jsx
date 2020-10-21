@@ -19,12 +19,14 @@ export default function Chat() {
           size="md"
           marginRight="20px"
           marginTop="1px"
+          bg="#ede7e3"
         />
         <Button
           float="left"
           size="md"
           height="45px"
-          variantColor="blue"
+          bg="#ffa62b"
+          border="none"
           color="black"
           variant="solid"
         >
