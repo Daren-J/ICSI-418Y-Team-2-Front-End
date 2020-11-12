@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "../styles/MyTournaments.css";
 import TournamentCard from "../components/TournamentCard";
-import NavBar from "../components/NavBar";
 
 export default function MyTournaments(props) {
   // You would normally receive IDs from the Backend from the Database
@@ -10,7 +9,6 @@ export default function MyTournaments(props) {
 
   return (
     <div className="MyTournaments">
-      <NavBar handleLogout={props.handleLogout} />
       <div className="innerMyTournaments">
         <div id="GlobalTour">
           <TournamentCard

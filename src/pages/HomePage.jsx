@@ -5,10 +5,9 @@ import LeagueNews from "../components/LeagueNews";
 import Chat from "../components/Chat";
 import Leaderboard from "../components/Leaderboard";
 
-export default function Homepage(props) {
+export default function Homepage() {
   return (
     <div className="Homepage">
-      <NavBar handleLogout={props.handleLogout} />
       <div id="home-components">
         <div className="home-element">
           <LeagueNews />
@@ -17,7 +16,7 @@ export default function Homepage(props) {
           <Leaderboard />
         </div>
         <div className="home-element" id="home-chat">
-          <Chat type="Global" />
+          <Chat chatType="Global" />
         </div>
       </div>
     </div>

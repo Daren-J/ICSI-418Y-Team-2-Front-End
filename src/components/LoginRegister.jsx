@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../styles/LoginRegister.css";
 import {
   Tabs,
@@ -12,57 +12,191 @@ import {
   Button,
   Tooltip,
   useToast,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+  CloseButton,
 } from "@chakra-ui/core";
-import { Link } from "react-router-dom";
-const axios = require("axios").default;
+import { Link, useHistory } from "react-router-dom";
+import Axios from "axios";
+import userContext from "../services/userContext";
 
 export default function LoginRegister(props) {
+  const toast = useToast();
+  const history = useHistory();
+  const { setUserData } = useContext(userContext);
+
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
+  const [registerConfirmPassword, setRegisterConfirmPassword] = useState("");
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerFirstName, setRegisterFirstName] = useState("");
   const [registerLastName, setRegisterLastName] = useState("");
+  const [error1, setError1] = useState();
+  const [error2, setError2] = useState();
+  const [error3, setError3] = useState();
+  const [error4, setError4] = useState();
+  const [error5, setError5] = useState();
+  const [check, setCheck] = useState(false);
 
-  function loginAuthAttempt() {
-    axios
-      .post("/login/signin", null, {
-        params: {
-          email: loginEmail,
-          password: loginPassword,
-        },
-      })
-      .then(function (response) {
-        console.log(response);
-        if (response.status === 200) {
-          props.handleLogout(true);
+  const loginAuthAttempt = async (e) => {
+    e.preventDefault();
+
+    try {
+      const userLoginInfo = {
+        email: loginEmail,
+        password: loginPassword,
+      };
+
+      const res = await Axios.post("http://localhost:8080/login/signin", null, {
+        params: userLoginInfo,
+      });
+
+      console.log(res.data);
+
+      if (res.status === 200) {
+        toast({
+          title: "Logged In!",
+          description: "Authentication Successful!",
+          status: "success",
+          duration: 2000,
+          isClosable: false,
+        });
+        setUserData({
+          token: res.data.JWTToken,
+          user: res.data.user,
+        });
+        localStorage.setItem("auth-token", res.data.JWTToken);
+        history.push("/Home");
+      } else {
+        toast({
+          title: "Invalid Credentials!",
+          description: "Please try again!",
+          status: "error",
+          duration: 2000,
+          isClosable: false,
+        });
+      }
+
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const registerAuthAttempt = async (e) => {
+    e.preventDefault();
+
+    try {
+      if (registerPassword !== registerConfirmPassword) {
+        setError1("Your Passwords don't match!\n");
+        setCheck(false);
+      } else {
+        setError1(null);
+        setCheck(true);
+      }
+
+      if (!/[~`!#@$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g.test(registerPassword)) {
+        setError2(
+          "Your Password needs to have at least 1 special character!\n"
+        );
+        setCheck(false);
+      } else {
+        setError2(null);
+        setCheck(true);
+      }
+
+      if (registerPassword.length < 6) {
+        setError3("Your Password must be at least 6 characters long!\n");
+        setCheck(false);
+      } else {
+        setError3(null);
+        setCheck(true);
+      }
+
+      if (!registerEmail.includes("@")) {
+        setError4("Invalid Email!\n");
+        setCheck(false);
+      } else {
+        setError4(null);
+        setCheck(true);
+      }
+
+      if (
+        registerEmail === "" ||
+        registerFirstName === "" ||
+        registerLastName === "" ||
+        registerUsername === "" ||
+        registerConfirmPassword === "" ||
+        registerPassword === ""
+      ) {
+        setError5("Cannot have blank fields!\n");
+        setCheck(false);
+      } else {
+        setError5(null);
+        setCheck(true);
+      }
+
+      if (
+        check === true &&
+        !error1 &&
+        !error2 &&
+        !error3 &&
+        !error4 &&
+        !error5
+      ) {
+        const response = await Axios.post(
+          "http://localhost:8080/login/signup",
+          {
+            username: registerUsername,
+            email: registerEmail,
+            password: registerPassword,
+            firstName: registerFirstName,
+            lastName: registerLastName,
+          }
+        );
+
+        if (response.status === 200 && !response.data.error) {
+          setError1(null);
+          setError2(null);
+          setError3(null);
+          setError4(null);
+          setError5(null);
+          setRegisterEmail("");
+          setRegisterPassword("");
+          setRegisterConfirmPassword("");
+          setRegisterFirstName("");
+          setRegisterLastName("");
+          setRegisterUsername("");
+
+          toast({
+            title: "Registered!",
+            description: "Account Created",
+            status: "success",
+            duration: 2000,
+            isClosable: false,
+          });
+          setCheck(false);
+        } else {
+          toast({
+            title: "Failure!",
+            description: response.data.error,
+            status: "error",
+            duration: 2000,
+            isClosable: false,
+          });
+          setCheck(false);
         }
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-      .then(function () {});
-  }
-
-  function registerAuthAttempt() {
-    axios
-      .post("/login/signup", {
-        username: registerUsername,
-        email: registerEmail,
-        password: registerPassword,
-        firstName: registerFirstName,
-        lastName: registerLastName,
-      })
-      .then(function (response) {
         console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-      .then(function () {});
-  }
-  const toast = useToast();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="LoginRegister">
       <h2 style={{ margin: 0, paddingBottom: "10px", fontSize: "30px" }}>
@@ -74,14 +208,14 @@ export default function LoginRegister(props) {
             <Tab
               mt="-1px"
               bg="#16697a"
+              id="loginID"
               style={{
                 color: "white",
                 border: "none",
                 boxShadow: "none",
                 outline: "none",
                 borderRadius: "20px 20px 0 0",
-              }}
-            >
+              }}>
               Login
             </Tab>
             <Tab
@@ -93,12 +227,10 @@ export default function LoginRegister(props) {
                 boxShadow: "none",
                 outline: "none",
                 borderRadius: "20px 20px 0 0",
-              }}
-            >
+              }}>
               Register
             </Tab>
           </TabList>
-
 
           <TabPanels>
             <TabPanel
@@ -110,8 +242,7 @@ export default function LoginRegister(props) {
                 boxShadow: "none",
                 outline: "none",
                 borderRadius: "0 0 25px 25px",
-              }}
-            >
+              }}>
               <div className="loginTab">
                 <FormControl>
                   <div>
@@ -122,8 +253,7 @@ export default function LoginRegister(props) {
                       pl="0"
                       pr="0"
                       textAlign="center"
-                      htmlFor="loginUserEmail"
-                    >
+                      htmlFor="loginUserEmail">
                       Email Address:
                     </FormLabel>
                     <Input
@@ -131,6 +261,7 @@ export default function LoginRegister(props) {
                       width="430px"
                       id="loginUserEmail"
                       placeholder="Email Address"
+                      value={loginEmail}
                       onChange={(e) => setLoginEmail(e.target.value)}
                     />
                   </div>
@@ -142,8 +273,7 @@ export default function LoginRegister(props) {
                       pl="0"
                       pr="0"
                       textAlign="center"
-                      htmlFor="loginUserPassword"
-                    >
+                      htmlFor="loginUserPassword">
                       Password:
                     </FormLabel>
                     <Input
@@ -152,6 +282,7 @@ export default function LoginRegister(props) {
                       id="loginUserPassword"
                       placeholder="Password"
                       type="password"
+                      value={loginPassword}
                       onChange={(e) => setLoginPassword(e.target.value)}
                     />
                   </div>
@@ -170,28 +301,24 @@ export default function LoginRegister(props) {
                       outline: "none",
                       boxShadow: "none",
                       cursor: "pointer",
-                    }}
-                  >
+                    }}>
                     Forgot Password
                   </Button>
-                  <Link to={"/HomePage"}>
-                    <Button
-                      rightIcon="arrow-forward"
-                      variantColor="green"
-                      variant="solid"
-                      w="40%"
-                      mt="30px"
-                      style={{
-                        border: "none",
-                        outline: "none",
-                        boxShadow: "none",
-                        cursor: "pointer",
-                      }}
-                      onClick={() => loginAuthAttempt()}
-                    >
-                      Log In
-                    </Button>
-                  </Link>
+                  <Button
+                    rightIcon="arrow-forward"
+                    variantColor="green"
+                    variant="solid"
+                    w="40%"
+                    mt="30px"
+                    style={{
+                      border: "none",
+                      outline: "none",
+                      boxShadow: "none",
+                      cursor: "pointer",
+                    }}
+                    onClick={loginAuthAttempt}>
+                    Log In
+                  </Button>
                 </FormControl>
               </div>
             </TabPanel>
@@ -204,8 +331,7 @@ export default function LoginRegister(props) {
                 boxShadow: "none",
                 outline: "none",
                 borderRadius: "0 0 25px 25px",
-              }}
-            >
+              }}>
               <div className="registerTab">
                 <FormControl isRequired>
                   <div
@@ -213,15 +339,13 @@ export default function LoginRegister(props) {
                       textAlign: "center",
                       float: "left",
                       width: "50%",
-                    }}
-                  >
+                    }}>
                     <FormLabel
                       mt="20px"
                       pl="0"
                       pr="0"
                       textAlign="center"
-                      htmlFor="fname"
-                    >
+                      htmlFor="fname">
                       First Name:
                     </FormLabel>
                     <Input
@@ -229,6 +353,7 @@ export default function LoginRegister(props) {
                       width="180px"
                       id="fname"
                       placeholder="First Name"
+                      value={registerFirstName}
                       onChange={(e) => setRegisterFirstName(e.target.value)}
                     />
                   </div>
@@ -237,15 +362,13 @@ export default function LoginRegister(props) {
                       textAlign: "center",
                       float: "left",
                       width: "50%",
-                    }}
-                  >
+                    }}>
                     <FormLabel
                       mt="20px"
                       pl="0"
                       pr="0"
                       textAlign="center"
-                      htmlFor="lname"
-                    >
+                      htmlFor="lname">
                       Last Name:
                     </FormLabel>
                     <Input
@@ -253,6 +376,7 @@ export default function LoginRegister(props) {
                       width="180px"
                       id="lname"
                       placeholder="Last Name"
+                      value={registerLastName}
                       onChange={(e) => setRegisterLastName(e.target.value)}
                     />
                   </div>
@@ -262,8 +386,7 @@ export default function LoginRegister(props) {
                       pl="0"
                       pr="0"
                       textAlign="center"
-                      htmlFor="username"
-                    >
+                      htmlFor="username">
                       Username:
                     </FormLabel>
                     <Input
@@ -271,6 +394,7 @@ export default function LoginRegister(props) {
                       width="430px"
                       id="username"
                       placeholder="Username"
+                      value={registerUsername}
                       onChange={(e) => setRegisterUsername(e.target.value)}
                     />
                   </div>
@@ -280,8 +404,7 @@ export default function LoginRegister(props) {
                       pl="0"
                       pr="0"
                       textAlign="center"
-                      htmlFor="userEmail"
-                    >
+                      htmlFor="userEmail">
                       Email Address:
                     </FormLabel>
                     <Input
@@ -289,6 +412,7 @@ export default function LoginRegister(props) {
                       width="430px"
                       id="userEmail"
                       placeholder="Email Address"
+                      value={registerEmail}
                       onChange={(e) => setRegisterEmail(e.target.value)}
                     />
                   </div>
@@ -297,15 +421,13 @@ export default function LoginRegister(props) {
                       textAlign: "center",
                       float: "left",
                       width: "50%",
-                    }}
-                  >
+                    }}>
                     <FormLabel
                       mt="20px"
                       pl="0"
                       pr="0"
                       textAlign="center"
-                      htmlFor="userPass"
-                    >
+                      htmlFor="userPass">
                       Password:
                     </FormLabel>
                     <Input
@@ -314,6 +436,7 @@ export default function LoginRegister(props) {
                       id="userPass"
                       placeholder="Password"
                       type="password"
+                      value={registerPassword}
                       onChange={(e) => setRegisterPassword(e.target.value)}
                     />
                   </div>
@@ -322,15 +445,13 @@ export default function LoginRegister(props) {
                       textAlign: "center",
                       float: "left",
                       width: "50%",
-                    }}
-                  >
+                    }}>
                     <FormLabel
                       mt="20px"
                       pl="0"
                       pr="0"
                       textAlign="center"
-                      htmlFor="conUserPass"
-                    >
+                      htmlFor="conUserPass">
                       Confirm Password:
                     </FormLabel>
                     <Input
@@ -339,14 +460,17 @@ export default function LoginRegister(props) {
                       id="conUserPass"
                       placeholder="Confirm Password"
                       type="password"
+                      value={registerConfirmPassword}
+                      onChange={(e) =>
+                        setRegisterConfirmPassword(e.target.value)
+                      }
                     />
                   </div>
 
                   <Tooltip
                     label="Create Account"
                     backgroundColor="green.500"
-                    placement="bottom"
-                  >
+                    placement="bottom">
                     <Button
                       rightIcon="check"
                       variantColor="green"
@@ -359,22 +483,27 @@ export default function LoginRegister(props) {
                         boxShadow: "none",
                         cursor: "pointer",
                       }}
-                      onClick={() => {
-                        toast({
-                          title: "Account created.",
-                          description: "We've created your account for you.",
-                          status: "success",
-                          duration: 9000,
-                          isClosable: true,
-                        });
-                        registerAuthAttempt();
-                      }}
-                    >
+                      onClick={registerAuthAttempt}>
                       Register
                     </Button>
                   </Tooltip>
                 </FormControl>
               </div>
+              {error1 || error2 || error3 || error4 || error5 ? (
+                <div
+                  style={{
+                    marginTop: "70px",
+                    color: "red",
+                    backgroundColor: "white",
+                    borderRadius: "15px",
+                  }}>
+                  <div>{error1 ? error1 : null}</div>
+                  <div>{error2 ? error2 : null}</div>
+                  <div>{error3 ? error3 : null}</div>
+                  <div>{error4 ? error4 : null}</div>
+                  <div>{error5 ? error5 : null}</div>
+                </div>
+              ) : null}
             </TabPanel>
           </TabPanels>
         </Tabs>

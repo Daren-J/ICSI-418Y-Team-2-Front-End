@@ -1,6 +1,5 @@
 import React from "react";
 import "../styles/Leaderboard.css";
-import { FormControl, Input, Button } from "@chakra-ui/core";
 
 const mockTeams = [
   {
@@ -120,7 +119,16 @@ function generateLeaderboard() {
 export default function Leaderboard(props) {
   return (
     <div className="Leaderboard">
-      <h1 style={{ margin: 0, padding: 0, paddingTop: '5px', paddingBottom: '5px',  color: "#ede7e3" }}>Leaderboard</h1>
+      <h1
+        style={{
+          margin: 0,
+          padding: 0,
+          paddingTop: "5px",
+          paddingBottom: "5px",
+          color: "#ede7e3",
+        }}>
+        Leaderboard
+      </h1>
       <div className="innerLeaderboard">
         <table className="LeaderboardTable">{generateLeaderboard()}</table>
       </div>

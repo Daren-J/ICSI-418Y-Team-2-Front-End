@@ -1,12 +1,22 @@
-import { FormControl, Input, Button } from "@chakra-ui/core";
-import React from "react";
+import { FormControl, Input, Button, Box } from "@chakra-ui/core";
+import React, { useContext } from "react";
+import { useState } from "react";
+import userContext from "../services/userContext";
 import "../styles/Chat.css";
 
-export default function Chat() {
+export default function Chat({ chatType }) {
+  const [message, setMessage] = useState();
+  const [chatMessages, setChatMessages] = useState();
+
+  const sendMessage = (e) => {
+    e.preventDefault();
+    chatMessages.push(<Box bg="blue" maxW="100px"></Box>);
+  };
+
   return (
     <div className="ChatBox">
       <div className="ChatTitleSection">
-        <h1 id="chatName">Chat</h1>
+        <h1 id="chatName">{chatType} Chat</h1>
       </div>
       <div className="InnerChatDiv"></div>
       <FormControl id="formControlInput">
@@ -20,6 +30,7 @@ export default function Chat() {
           marginRight="20px"
           marginTop="1px"
           bg="#ede7e3"
+          onChange={(e) => setMessage(e.target.value)}
         />
         <Button
           float="left"
@@ -29,7 +40,7 @@ export default function Chat() {
           border="none"
           color="black"
           variant="solid"
-        >
+          onClick={(e) => sendMessage(e)}>
           Send
         </Button>
       </FormControl>
