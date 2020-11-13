@@ -148,7 +148,7 @@ export default function TeamSelection({ setMyTeamRP }) {
               <Tab
                 mb="0"
                 bg="#82c0cc"
-                _selected= {{ color: 'black', bg: '#ffa62b'}}
+                _selected={{ color: "black", bg: "#ffa62b" }}
                 style={{
                   color: "black",
                   border: "none",
@@ -157,14 +157,13 @@ export default function TeamSelection({ setMyTeamRP }) {
                   borderRadius: 0,
                   borderLeft: "1px solid #ede7e3",
                   borderRight: "1px solid #ede7e3",
-                }}
-              >
+                }}>
                 Team Stats
               </Tab>
               <Tab
                 mb="0"
                 bg="#82c0cc"
-                _selected= {{ color: 'black', bg: '#ffa62b'}}
+                _selected={{ color: "black", bg: "#ffa62b" }}
                 style={{
                   color: "black",
                   border: "none",
@@ -172,8 +171,7 @@ export default function TeamSelection({ setMyTeamRP }) {
                   outline: "none",
                   borderRadius: 0,
                   borderRight: "1px solid #ede7e3",
-                }}
-              >
+                }}>
                 Roster Selection
               </Tab>
               {locked || isLockedIn ? null : (
@@ -187,8 +185,7 @@ export default function TeamSelection({ setMyTeamRP }) {
                     outline: "none",
                     borderRadius: 0,
                     borderRight: "1px solid #ede7e3",
-                  }}
-                >
+                  }}>
                   Active Players
                 </Tab>
               )}
@@ -206,8 +203,7 @@ export default function TeamSelection({ setMyTeamRP }) {
                       style={{
                         float: "left",
                         margin: "auto",
-                      }}
-                    >
+                      }}>
                       NO PLAYER DATA
                     </h1>
                   </div>
@@ -220,14 +216,12 @@ export default function TeamSelection({ setMyTeamRP }) {
                       width: "200%",
                       height: "680px",
                       backgroundColor: "rgba(34, 168, 168, 0.8)",
-                    }}
-                  >
+                    }}>
                     <div className="ifLockedInButton">
                       <Tooltip
                         label="Unlock Players"
                         placement="bottom"
-                        bg="red.600"
-                      >
+                        bg="red.600">
                         <Button
                           variantColor="red"
                           onClick={() => {
@@ -245,8 +239,7 @@ export default function TeamSelection({ setMyTeamRP }) {
                             activePlayers.splice(0, activePlayers.length);
                             setPlayerRankingPoints(0);
                             setMyTeamRP(0);
-                          }}
-                        >
+                          }}>
                           Un-Lock{" "}
                           <Icon
                             marginLeft="0px"
@@ -293,8 +286,7 @@ export default function TeamSelection({ setMyTeamRP }) {
                   });
                   setIsLockedIn(true);
                   setCanLockIn(false);
-                }}
-              >
+                }}>
                 Lock In{" "}
                 <Icon
                   marginLeft="0px"

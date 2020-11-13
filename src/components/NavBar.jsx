@@ -1,12 +1,27 @@
 import React, { useContext } from "react";
 import "../styles/NavBar.css";
 import { Link, Redirect, useHistory } from "react-router-dom";
-import { Avatar, Image, Button } from "@chakra-ui/core";
+import {
+  Avatar,
+  Image,
+  Button,
+  useDisclosure,
+  Input,
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerFooter,
+  DrawerContent,
+  DrawerOverlay,
+  DrawerHeader,
+} from "@chakra-ui/core";
 import userContext from "../services/userContext";
 
 export default function NavBar() {
   const { userData, setUserData } = useContext(userContext);
   const history = useHistory();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const btnRef = React.useRef();
 
   const profile = () => {
     history.push("/Profile");
@@ -48,12 +63,214 @@ export default function NavBar() {
             </Link>
           </li>
           <li className="NavBar-li">
-            <Link eventKey={2} onClick={logout} className="h2tagNav">
+            <div ref={btnRef} onClick={onOpen} style={{ marginTop: "20px" }}>
+              <div className="menuIcon"></div>
+              <div className="menuIcon"></div>
+              <div className="menuIcon"></div>
+            </div>
+            <Drawer
+              size="sm"
+              isOpen={isOpen}
+              placement="right"
+              onClose={onClose}
+              finalFocusRef={btnRef}>
+              <DrawerOverlay />
+              <DrawerContent>
+                <DrawerCloseButton
+                  background="red"
+                  mt="5px"
+                  _hover={{ background: "red", color: "white" }}
+                />
+                <DrawerHeader style={{ color: "white", background: "#16697a" }}>
+                  My Friends
+                </DrawerHeader>
+
+                <DrawerBody bg="black">
+                  <div className="incomingFriendRequests">
+                    Incoming Friend Requests
+                  </div>
+                  <div className="friendRequestSection">
+                    <div className="friendTabInfo">
+                      <div className="friendTabAvatar">
+                        <Avatar src="https://cdn.discordapp.com/attachments/747957440733249656/776683703317299240/72948731.jpg" />
+                      </div>
+                      <div className="friendTabName">Daniel Nofulla</div>
+                      <div className="friendTabButtons">
+                        <div>
+                          <Button ml="5px" float="left" size="xs">
+                            Accept
+                          </Button>
+                        </div>
+                        <div>
+                          <Button ml="10px" float="left" size="xs">
+                            Reject
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="friendTabInfo">
+                      <div className="friendTabAvatar">
+                        <Avatar src="https://cdn.discordapp.com/attachments/747957440733249656/776683703317299240/72948731.jpg" />
+                      </div>
+                      <div className="friendTabName">Daniel Nofulla</div>
+                      <div className="friendTabButtons">
+                        <div>
+                          <Button ml="5px" float="left" size="xs">
+                            Accept
+                          </Button>
+                        </div>
+                        <div>
+                          <Button ml="10px" float="left" size="xs">
+                            Reject
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="friendTabInfo">
+                      <div className="friendTabAvatar">
+                        <Avatar src="https://cdn.discordapp.com/attachments/747957440733249656/776683703317299240/72948731.jpg" />
+                      </div>
+                      <div className="friendTabName">Daniel Nofulla</div>
+                      <div className="friendTabButtons">
+                        <div>
+                          <Button ml="5px" float="left" size="xs">
+                            Accept
+                          </Button>
+                        </div>
+                        <div>
+                          <Button ml="10px" float="left" size="xs">
+                            Reject
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="friendTabInfo">
+                      <div className="friendTabAvatar">
+                        <Avatar src="https://cdn.discordapp.com/attachments/747957440733249656/776683703317299240/72948731.jpg" />
+                      </div>
+                      <div className="friendTabName">Daniel Nofulla</div>
+                      <div className="friendTabButtons">
+                        <div>
+                          <Button ml="5px" float="left" size="xs">
+                            Accept
+                          </Button>
+                        </div>
+                        <div>
+                          <Button ml="10px" float="left" size="xs">
+                            Reject
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="friendTabInfo">
+                      <div className="friendTabAvatar">
+                        <Avatar src="https://cdn.discordapp.com/attachments/747957440733249656/776683703317299240/72948731.jpg" />
+                      </div>
+                      <div className="friendTabName">Daniel Nofulla</div>
+                      <div className="friendTabButtons">
+                        <div>
+                          <Button ml="5px" float="left" size="xs">
+                            Accept
+                          </Button>
+                        </div>
+                        <div>
+                          <Button ml="10px" float="left" size="xs">
+                            Reject
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="friendTabInfo">
+                      <div className="friendTabAvatar">
+                        <Avatar src="https://cdn.discordapp.com/attachments/747957440733249656/776683703317299240/72948731.jpg" />
+                      </div>
+                      <div className="friendTabName">Daniel Nofulla</div>
+                      <div className="friendTabButtons">
+                        <div>
+                          <Button ml="5px" float="left" size="xs">
+                            Accept
+                          </Button>
+                        </div>
+                        <div>
+                          <Button ml="10px" float="left" size="xs">
+                            Reject
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="currentFriends">Friends List</div>
+                  <div className="currentFriendsSection">
+                    <div className="friendTabInfo">
+                      <div className="friendTabAvatar">
+                        <Avatar src="https://cdn.discordapp.com/attachments/747957440733249656/776683703317299240/72948731.jpg" />
+                      </div>
+                      <div className="friendTabName">Daniel Nofulla</div>
+                      <div className="friendTabButtons">
+                        <div>
+                          <Button ml="5px" float="left" size="xs">
+                            Invite
+                          </Button>
+                        </div>
+                        <div>
+                          <Button ml="10px" float="left" size="xs">
+                            Message
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="friendTabInfo">
+                      <div className="friendTabAvatar">
+                        <Avatar src="https://cdn.discordapp.com/attachments/747957440733249656/776683703317299240/72948731.jpg" />
+                      </div>
+                      <div className="friendTabName">Daniel Nofulla</div>
+                      <div className="friendTabButtons">
+                        <div>
+                          <Button ml="5px" float="left" size="xs">
+                            Invite
+                          </Button>
+                        </div>
+                        <div>
+                          <Button ml="10px" float="left" size="xs">
+                            Message
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="friendTabInfo">
+                      <div className="friendTabAvatar">
+                        <Avatar src="https://cdn.discordapp.com/attachments/747957440733249656/776683703317299240/72948731.jpg" />
+                      </div>
+                      <div className="friendTabName">Daniel Nofulla</div>
+                      <div className="friendTabButtons">
+                        <div>
+                          <Button ml="5px" float="left" size="xs">
+                            Invite
+                          </Button>
+                        </div>
+                        <div>
+                          <Button ml="10px" float="left" size="xs">
+                            Message
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </DrawerBody>
+
+                <DrawerFooter bg="black"></DrawerFooter>
+              </DrawerContent>
+            </Drawer>
+          </li>
+          <li className="NavBar-li">
+            <Link onClick={logout} className="h2tagNav">
               Log Out
             </Link>
           </li>
+
           <li className="NavBar-li">
-            <Link className="h2tagNav" eventKey={2} onClick={profile}>
+            <Link className="h2tagNav" onClick={profile}>
               My Profile
             </Link>
           </li>
