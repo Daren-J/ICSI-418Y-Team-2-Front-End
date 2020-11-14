@@ -12,11 +12,6 @@ import {
   Button,
   Tooltip,
   useToast,
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  AlertDescription,
-  CloseButton,
 } from "@chakra-ui/core";
 import { Link, useHistory } from "react-router-dom";
 import Axios from "axios";
@@ -310,6 +305,7 @@ export default function LoginRegister(props) {
                     variant="solid"
                     w="40%"
                     mt="30px"
+                    type="submit"
                     style={{
                       border: "none",
                       outline: "none",

@@ -1,16 +1,38 @@
 import { FormControl, Input, Button, Box } from "@chakra-ui/core";
 import React, { useContext } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import io from "socket.io-client";
 import userContext from "../services/userContext";
 import "../styles/Chat.css";
+import moment from "moment";
+
+const socket = io.connect("http://localhost:3001", {
+  transports: ["websocket", "polling"],
+});
 
 export default function Chat({ chatType }) {
-  const [message, setMessage] = useState();
-  const [chatMessages, setChatMessages] = useState();
+  const { userData, setUserData } = useContext(userContext);
+  const [message, setMessage] = useState("");
+  const [chatMessages, setChatMessages] = useState([]);
+
+  useEffect(() => {
+    const name = userData.user.username;
+    socket.on("message", (message) => {
+      setChatMessages((chatMessages) => [...chatMessages, message]);
+    });
+  }, []);
 
   const sendMessage = (e) => {
     e.preventDefault();
-    chatMessages.push(<Box bg="blue" maxW="100px"></Box>);
+
+    const payload = {
+      user: userData.user.username,
+      message: message,
+    };
+    if (message !== "") {
+      socket.emit("send", payload);
+      setMessage("");
+    }
   };
 
   return (
@@ -18,7 +40,14 @@ export default function Chat({ chatType }) {
       <div className="ChatTitleSection">
         <h1 id="chatName">{chatType} Chat</h1>
       </div>
-      <div className="InnerChatDiv"></div>
+      <div className="InnerChatDiv" style={{ color: "black" }}>
+        {chatMessages.map((data, index) => (
+          <div className="messageBoxWrapper" key={index}>
+            <div className="usernameChatDivMessage">{data.user}</div>
+            <div className="chatMessageText">{data.text}</div>
+          </div>
+        ))}
+      </div>
       <FormControl id="formControlInput">
         <Input
           float="left"
@@ -30,6 +59,7 @@ export default function Chat({ chatType }) {
           marginRight="20px"
           marginTop="1px"
           bg="#ede7e3"
+          value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
         <Button
@@ -40,7 +70,7 @@ export default function Chat({ chatType }) {
           border="none"
           color="black"
           variant="solid"
-          onClick={(e) => sendMessage(e)}>
+          onClick={sendMessage}>
           Send
         </Button>
       </FormControl>
