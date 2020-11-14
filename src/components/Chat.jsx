@@ -38,7 +38,7 @@ export default function Chat({ chatType }) {
   return (
     <div className="ChatBox">
       <div className="ChatTitleSection">
-        <h1 id="chatName">{chatType} Chat</h1>
+        <h1 id="chatName">{chatType}</h1>
       </div>
       <div className="InnerChatDiv" style={{ color: "black" }}>
         {chatMessages.map((data, index) => (
@@ -48,10 +48,10 @@ export default function Chat({ chatType }) {
           </div>
         ))}
       </div>
-      <FormControl id="formControlInput">
+      <FormControl id="formControlInput" display="flex">
         <Input
           float="left"
-          width="270px"
+          width="100%"
           type="text"
           id="messageContent"
           aria-describedby="textContent"
@@ -63,7 +63,7 @@ export default function Chat({ chatType }) {
           onChange={(e) => setMessage(e.target.value)}
         />
         <Button
-          float="left"
+          float="right"
           size="md"
           height="45px"
           bg="#ffa62b"

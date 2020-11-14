@@ -77,11 +77,15 @@
 }
 
 .incomingFriendRequests {
-  margin-top: 50px;
+  margin-top: 20px;
+  font-size: 1.4em;
+  color: #103451;
 }
 
 .currentFriends {
-  margin-top: 50px;
+  margin-top: 20px;
+  font-size: 1.4em;
+  color: #103451;
 }
 
 .friendRequestSection {
@@ -111,9 +115,10 @@
 .friendTabInfo {
   width: 100%;
   height: 60px;
-  background-color: rgb(55, 38, 117);
-  margin-top: 10px;
+  background-color: transparent;
   border-radius: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .friendTabAvatar {
@@ -125,11 +130,10 @@
 }
 
 .friendTabName {
-  width: 150px;
   float: left;
-  margin-top: 17px;
   font-size: 20px;
   text-align: center;
+  color: #ffa62b;
 }
 
 .friendTabButtons {
