@@ -1,6 +1,14 @@
 .ChatBox {
-  width: 450px;
+  width: 100%;
   height: 660px;
+  background-color: #16697a;
+  border-radius: 25px;
+  border: 1px solid black;
+}
+
+.friendChat {
+  width: 100%;
+  height: 260px;
   background-color: #16697a;
   border-radius: 25px;
   border: 1px solid black;
@@ -18,7 +26,7 @@
 .InnerChatDiv {
   background-color: #ede7e3;
   border: 1px solid black;
-  width: 400px;
+  width: 100%;
   height: 530px;
   margin-left: auto;
   margin-right: auto;
@@ -26,11 +34,21 @@
   overflow-y: scroll;
 }
 
-#formControlInput {
+.innerChatDiv-friend {
+  background-color: #ede7e3;
+  border: 1px solid black;
   width: 100%;
-  background-color: #489fb5;
+  height: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+#formControlInput {
+  width: 90%;
+  margin: auto;
   margin-top: 15px;
-  margin-left: 25px;
 }
 
 .messageBoxWrapper {
@@ -50,7 +68,7 @@
 
 .chatMessageText {
   float: left;
-  max-width: 85%;
+  max-width: 70%;
   display: inline-block;
   word-wrap: break-word;
   font-size: 15px;

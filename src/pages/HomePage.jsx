@@ -16,7 +16,7 @@ export default function Homepage() {
           <Leaderboard />
         </div>
         <div className="home-element" id="home-chat">
-          <Chat chatType="Global" />
+          <Chat chatClass="ChatBox" icd="InnerChatDiv" chatName="Global Chat" />
         </div>
       </div>
     </div>

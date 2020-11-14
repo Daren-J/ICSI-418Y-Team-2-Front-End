@@ -26,20 +26,22 @@ body {
   margin: none;
   margin: auto;
   flex-shrink: 0;
+  margin-bottom: 15px;
 }
 
 .LeagueNews {
   margin: auto;
-  box-shadow: 0 5px 5px 5px #464646;
+  box-shadow: 0 2px 5px 5px #464646;
 }
 
 .Leaderboard {
   margin: auto;
-  box-shadow: 0 5px 5px 5px #464646;
+  box-shadow: 0 2px 5px 5px #464646;
 }
 
 #home-chat {
   margin: auto;
+  width: 550px;
   border-radius: 25px;
-  box-shadow: 0 5px 5px 5px #464646;
+  box-shadow: 0 2px 5px 5px #464646;
 }

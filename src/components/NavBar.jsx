@@ -2,7 +2,12 @@ import React, { useContext } from "react";
 import "../styles/NavBar.css";
 import { Link, Redirect, useHistory } from "react-router-dom";
 import {
+  Accordion,
+  AccordionItem,
+  AccordionHeader,
+  AccordionPanel,
   Avatar,
+  Box,
   Image,
   Button,
   useDisclosure,
@@ -16,6 +21,8 @@ import {
   DrawerHeader,
 } from "@chakra-ui/core";
 import userContext from "../services/userContext";
+import Chat from "./Chat";
+import FriendsList from "./FriendsList";
 
 export default function NavBar() {
   const { userData, setUserData } = useContext(userContext);
@@ -85,7 +92,7 @@ export default function NavBar() {
                   My Friends
                 </DrawerHeader>
 
-                <DrawerBody bg="black">
+                <DrawerBody bg="#82c0cc">
                   <div className="incomingFriendRequests">
                     Incoming Friend Requests
                   </div>
@@ -202,64 +209,11 @@ export default function NavBar() {
 
                   <div className="currentFriends">Friends List</div>
                   <div className="currentFriendsSection">
-                    <div className="friendTabInfo">
-                      <div className="friendTabAvatar">
-                        <Avatar src="https://cdn.discordapp.com/attachments/747957440733249656/776683703317299240/72948731.jpg" />
-                      </div>
-                      <div className="friendTabName">Daniel Nofulla</div>
-                      <div className="friendTabButtons">
-                        <div>
-                          <Button ml="5px" float="left" size="xs">
-                            Invite
-                          </Button>
-                        </div>
-                        <div>
-                          <Button ml="10px" float="left" size="xs">
-                            Message
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="friendTabInfo">
-                      <div className="friendTabAvatar">
-                        <Avatar src="https://cdn.discordapp.com/attachments/747957440733249656/776683703317299240/72948731.jpg" />
-                      </div>
-                      <div className="friendTabName">Daniel Nofulla</div>
-                      <div className="friendTabButtons">
-                        <div>
-                          <Button ml="5px" float="left" size="xs">
-                            Invite
-                          </Button>
-                        </div>
-                        <div>
-                          <Button ml="10px" float="left" size="xs">
-                            Message
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="friendTabInfo">
-                      <div className="friendTabAvatar">
-                        <Avatar src="https://cdn.discordapp.com/attachments/747957440733249656/776683703317299240/72948731.jpg" />
-                      </div>
-                      <div className="friendTabName">Daniel Nofulla</div>
-                      <div className="friendTabButtons">
-                        <div>
-                          <Button ml="5px" float="left" size="xs">
-                            Invite
-                          </Button>
-                        </div>
-                        <div>
-                          <Button ml="10px" float="left" size="xs">
-                            Message
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
+                  <FriendsList />                
                   </div>
                 </DrawerBody>
 
-                <DrawerFooter bg="black"></DrawerFooter>
+                <DrawerFooter bg="#16697a"></DrawerFooter>
               </DrawerContent>
             </Drawer>
           </li>

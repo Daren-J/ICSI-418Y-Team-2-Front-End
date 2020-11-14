@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import NavBar from "../components/NavBar";
 import "../styles/TournamentDetails.css";
@@ -98,7 +99,7 @@ export default function TournamentDetails(props) {
               <TabPanel>
                 <div id="TourDetailsPanel3">
                     <div id="tour-chat">
-                      <Chat chatType="Tournament" />
+                      <Chat chatClass="ChatBox" icd="InnerChatDiv" chatName="Tournament Chat" />
                     </div>
                     <div id="tour-lb">
                       <Leaderboard />

@@ -85,7 +85,9 @@
 }
 
 #tour-chat {
+  width: 440px;
   margin: auto;
+  margin-bottom: 15px;
 }
 
 #tour-lb {
