@@ -72,7 +72,7 @@
 .menuIcon {
   width: 35px;
   height: 5px;
-  background-color: black;
+  background-color: #ffa62b;
   margin: 6px 0;
 }
 
@@ -90,8 +90,8 @@
 
 .friendRequestSection {
   border: 1px solid white;
-  min-height: 300px;
-  width: 375px;
+  min-height: 40%;
+  width: 95%;
   background-color: #14434d;
   margin: auto;
   margin-top: 5px;
@@ -102,8 +102,8 @@
 
 .currentFriendsSection {
   border: 1px solid white;
-  min-height: 300px;
-  width: 375px;
+  min-height: 40%;
+  width: 95%;
   background-color: #14434d;
   margin: auto;
   margin-top: 5px;

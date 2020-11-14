@@ -10,7 +10,7 @@ const socket = io.connect("http://localhost:3001", {
   transports: ["websocket", "polling"],
 });
 
-export default function Chat({ chatType }) {
+export default function Chat(props) {
   const { userData, setUserData } = useContext(userContext);
   const [message, setMessage] = useState("");
   const [chatMessages, setChatMessages] = useState([]);
@@ -21,6 +21,8 @@ export default function Chat({ chatType }) {
       setChatMessages((chatMessages) => [...chatMessages, message]);
     });
   }, []);
+
+  console.log(props.class)
 
   const sendMessage = (e) => {
     e.preventDefault();
@@ -36,11 +38,11 @@ export default function Chat({ chatType }) {
   };
 
   return (
-    <div className="ChatBox">
+    <div className={props.chatClass}>
       <div className="ChatTitleSection">
-        <h1 id="chatName">{chatType}</h1>
+        <h1 id="chatName">{props.chatName}</h1>
       </div>
-      <div className="InnerChatDiv" style={{ color: "black" }}>
+      <div className={props.icd} style={{ color: "black" }}>
         {chatMessages.map((data, index) => (
           <div className="messageBoxWrapper" key={index}>
             <div className="usernameChatDivMessage">{data.user}</div>

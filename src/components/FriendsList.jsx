@@ -3,6 +3,7 @@ import "../styles/FriendsList.css";
 import { Link, Redirect, useHistory } from "react-router-dom";
 import {
   Accordion,
+  AccordionIcon,
   AccordionItem,
   AccordionHeader,
   AccordionPanel,
@@ -40,9 +41,12 @@ function enumerateFriends(friends) {
                         <div className="currentFriendName">{friends[i]}</div>
                         </div>
                         </Box>
+                        <AccordionIcon 
+                            color="#ffa62b"
+                        />
                     </AccordionHeader>
                     <AccordionPanel>
-                        <Chat chatType={friendName}/>
+                        <Chat chatClass="friendChat" icd="innerChatDiv-friend" chatName={friendName}/>
                     </AccordionPanel>
                     </>
                 )}
