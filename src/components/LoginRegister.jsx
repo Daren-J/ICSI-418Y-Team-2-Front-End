@@ -94,29 +94,19 @@ export default function LoginRegister(props) {
         setCheck(true);
       }
 
-      if (!/[~`!#@$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g.test(registerPassword)) {
-        setError2(
-          "Your Password needs to have at least 1 special character!\n"
-        );
+      if (registerPassword.length < 6) {
+        setError2("Your Password must be at least 6 characters long!\n");
         setCheck(false);
       } else {
         setError2(null);
         setCheck(true);
       }
 
-      if (registerPassword.length < 6) {
-        setError3("Your Password must be at least 6 characters long!\n");
+      if (!registerEmail.includes("@")) {
+        setError3("Invalid Email!\n");
         setCheck(false);
       } else {
         setError3(null);
-        setCheck(true);
-      }
-
-      if (!registerEmail.includes("@")) {
-        setError4("Invalid Email!\n");
-        setCheck(false);
-      } else {
-        setError4(null);
         setCheck(true);
       }
 
@@ -128,21 +118,14 @@ export default function LoginRegister(props) {
         registerConfirmPassword === "" ||
         registerPassword === ""
       ) {
-        setError5("Cannot have blank fields!\n");
+        setError4("Cannot have blank fields!\n");
         setCheck(false);
       } else {
-        setError5(null);
+        setError4(null);
         setCheck(true);
       }
 
-      if (
-        check === true &&
-        !error1 &&
-        !error2 &&
-        !error3 &&
-        !error4 &&
-        !error5
-      ) {
+      if (check === true && !error1 && !error2 && !error3 && !error4) {
         const response = await Axios.post(
           "http://localhost:8080/login/signup",
           {
@@ -159,7 +142,6 @@ export default function LoginRegister(props) {
           setError2(null);
           setError3(null);
           setError4(null);
-          setError5(null);
           setRegisterEmail("");
           setRegisterPassword("");
           setRegisterConfirmPassword("");

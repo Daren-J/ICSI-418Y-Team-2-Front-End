@@ -22,7 +22,7 @@ export default function Chat(props) {
     });
   }, []);
 
-  console.log(props.class)
+  console.log(props.class);
 
   const sendMessage = (e) => {
     e.preventDefault();
@@ -72,6 +72,7 @@ export default function Chat(props) {
           border="none"
           color="black"
           variant="solid"
+          type="button"
           onClick={sendMessage}>
           Send
         </Button>
