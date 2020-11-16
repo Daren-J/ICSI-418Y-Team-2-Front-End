@@ -6,3 +6,8 @@
     #ede7e3
     #ffa62b
 */
+
+::-webkit-scrollbar{
+    width: 0px;
+    background: transparent;
+  }

@@ -31,14 +31,14 @@
 }
 
 #TourDetailsPanel1 {
-  height: 740px;
+  height: 640px;
   background-color: #489fb5;
   border-radius: 0 0 10px 10px;
   padding-bottom: 50px;
 }
 
 #TourDetailsPanel2 {
-  height: 740px;
+  height: 640px;
   background-color: #489fb5;
   border-radius: 0 0 10px 10px;
   padding-bottom: 5%;
@@ -48,7 +48,7 @@
 }
 
 #TourDetailsPanel3 {
-  height: 740px;
+  height: 640px;
   background-color: #489fb5;
   border-radius: 0 0 10px 10px;
   padding-top: 2%;
@@ -85,7 +85,9 @@
 }
 
 #tour-chat {
+  width: 440px;
   margin: auto;
+  margin-bottom: 15px;
 }
 
 #tour-lb {

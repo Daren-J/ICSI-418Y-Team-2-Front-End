@@ -1,7 +1,7 @@
 .NavBar {
   width: 100%;
   height: 65px;
-  background-color:#16697a;
+  background-color: #16697a;
   box-shadow: 0 5px 5px -1px #464646;
 }
 
@@ -49,6 +49,10 @@
   float: right;
 }
 
+.NavBar-li:nth-last-child(3) {
+  float: right;
+}
+
 .h2tagNav {
   font-family: Arial, Helvetica, sans-serif;
   float: left;
@@ -61,6 +65,80 @@
 }
 
 .h2tagNav:hover {
-  color:#ffa62b;
+  color: #ffa62b;
   cursor: pointer;
+}
+
+.menuIcon {
+  width: 35px;
+  height: 5px;
+  background-color: #ffa62b;
+  margin: 6px 0;
+}
+
+.incomingFriendRequests {
+  margin-top: 20px;
+  font-size: 1.4em;
+  color: #103451;
+}
+
+.currentFriends {
+  margin-top: 20px;
+  font-size: 1.4em;
+  color: #103451;
+}
+
+.friendRequestSection {
+  border: 1px solid white;
+  min-height: 40%;
+  width: 95%;
+  background-color: #14434d;
+  margin: auto;
+  margin-top: 5px;
+  padding: 10px;
+  height: 45px;
+  overflow-y: scroll;
+}
+
+.currentFriendsSection {
+  border: 1px solid white;
+  min-height: 40%;
+  width: 95%;
+  background-color: #14434d;
+  margin: auto;
+  margin-top: 5px;
+  padding: 10px;
+  height: 45px;
+  overflow-y: scroll;
+}
+
+.friendTabInfo {
+  width: 100%;
+  height: 60px;
+  background-color: transparent;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.friendTabAvatar {
+  width: 50px;
+  float: left;
+  text-align: center;
+  margin-top: 7px;
+  margin-left: 5px;
+}
+
+.friendTabName {
+  float: left;
+  font-size: 20px;
+  text-align: center;
+  color: #ffa62b;
+}
+
+.friendTabButtons {
+  width: 150px;
+  margin: auto;
+  float: left;
+  margin-top: 20px;
 }

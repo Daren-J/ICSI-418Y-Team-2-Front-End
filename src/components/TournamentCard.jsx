@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from "react";
 import "../styles/TournamentCard.css";
-import { Accordion, AccordionItem, AccordionHeader, AccordionPanel,
-          Button, Image, Progress, Stack, Box } from "@chakra-ui/core";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionHeader,
+  AccordionPanel,
+  Button,
+  Image,
+  Progress,
+  Stack,
+  Box,
+} from "@chakra-ui/core";
 import { Link, Route } from "react-router-dom";
 
 export default function TournamentCard({
@@ -75,19 +84,34 @@ export default function TournamentCard({
       {TourDetail == true ? (
         <div className="StatsTourCard">
           <div className="more-info">
-            <Accordion allowToggle allowMultiple marginTop="5px" marginBottom="5px">
+            <Accordion
+              allowToggle
+              allowMultiple
+              marginTop="5px"
+              marginBottom="5px">
               <AccordionItem defaultIsOpen="false">
                 {({ isExpanded }) => (
                   <>
-                  <AccordionHeader border="none" borderRadius="10px" color="#ede7e3" bg="#16697a" _hover="bg: #ffa62b">
-                    <Box flex="1" textAlign="center">
-                    {isExpanded ? "Show Less" : "Show More"}
-                    </Box>
-                  </AccordionHeader>
+                    <AccordionHeader
+                      border="none"
+                      borderRadius="10px"
+                      color="#ede7e3"
+                      bg="#16697a"
+                      _hover="bg: #ffa62b">
+                      <Box flex="1" textAlign="center">
+                        {isExpanded ? "Show Less" : "Show More"}
+                      </Box>
+                    </AccordionHeader>
                     <AccordionPanel>
-                      <div className="acc-element" id="TourRegisteredTeams">Registered Teams: {16}</div>
-                      <div className="acc-element" id="AverageRankingPoints">Average Team RP: {360}/400</div>
-                      <div className="acc-element" id="TourTotalMatches">Total Matches: {16 * 2}</div>
+                      <div className="acc-element" id="TourRegisteredTeams">
+                        Registered Teams: {16}
+                      </div>
+                      <div className="acc-element" id="AverageRankingPoints">
+                        Average Team RP: {360}/400
+                      </div>
+                      <div className="acc-element" id="TourTotalMatches">
+                        Total Matches: {16 * 2}
+                      </div>
                       <div className="acc-element" id="TourMatchesRemaining">
                         Matches Remaining: {12}/{16 * 2}
                       </div>
@@ -116,7 +140,10 @@ export default function TournamentCard({
 
                       <div id="TeamEarnedPoints">
                         My Team's RP:{" "}
-                        {myTeamRP === null || myTeamRP === undefined ? 0 : myTeamRP}/400
+                        {myTeamRP === null || myTeamRP === undefined
+                          ? 0
+                          : myTeamRP}
+                        /400
                       </div>
                       <Progress
                         borderRadius="15px"
@@ -125,14 +152,16 @@ export default function TournamentCard({
                         color="pink"
                         size="lg"
                         value={
-                          ((myTeamRP === null || myTeamRP === undefined ? 0 : myTeamRP) /
+                          ((myTeamRP === null || myTeamRP === undefined
+                            ? 0
+                            : myTeamRP) /
                             400) *
                           100
                         }
                         marginTop="5px"
                       />
                     </AccordionPanel>
-                    </>
+                  </>
                 )}
               </AccordionItem>
             </Accordion>
@@ -143,15 +172,13 @@ export default function TournamentCard({
           <Link
             to={{
               pathname: `/TournamentDetails/${tourid}`,
-            }}
-          >
+            }}>
             <Button
               _focus={{ outline: "none", border: "none" }}
               style={{ outline: "none", border: "none", cursor: "pointer" }}
               bg="#ffa62b"
               color="black"
-              size="md"
-            >
+              size="md">
               View Tournament
             </Button>
           </Link>
